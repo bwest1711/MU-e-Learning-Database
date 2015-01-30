@@ -35,7 +35,7 @@ Install dependencies using pip:
 
     pip install requirements.txt
 
-(Optional) Initialize the database and insert test data: 
+Initialize the database and insert test data: 
 
     python init_db.py
     python insert_test_data.py
@@ -69,3 +69,5 @@ Run the automatic builder (this will watch the folder for changes and re-build t
 Once you have all dependencies installed, the client-side app built, and the database initialized, use one of the helper scripts to run the server (in the project's root directory): 
 
     python run_dev.py
+
+The server should now be serving a page at http://localhost:5000/.
