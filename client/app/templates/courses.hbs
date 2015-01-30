@@ -1,0 +1,5 @@
+<h2>Courses</h2>
+{{#each course in model}}
+<p>{{#link-to 'course' course}}<b>{{course.department}}{{course.number}}</b> {{course.title}}{{/link-to}}</p>
+{{/each}}
+{{outlet}}

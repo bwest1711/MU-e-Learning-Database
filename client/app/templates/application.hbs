@@ -1,0 +1,17 @@
+<div class="container">
+  <h1><img src="/client/assets/mu_logo.png"/> <strong>MU e-Learning Course Database</strong></h1>
+  <div class="navbar navbar-default">
+    <div class="navbar-inner">
+      <ul class="nav navbar-nav">
+        <li>{{#link-to 'search' activeClass='activeLink'}}Search{{/link-to}}</li>
+        <li>{{#link-to 'courses' activeClass='activeLink'}}Courses{{/link-to}}</li>
+        <li>{{#link-to 'instructors' activeClass='activeLink'}}Instructors{{/link-to}}</li>
+        <li>{{#link-to 'tools' activeClass='activeLink'}}Tools{{/link-to}}</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" style="padding-right:10px;">
+        <li><a href="#">Login</a><li>
+      </ul>
+    </div>
+  </div>
+  {{outlet}}
+</div>

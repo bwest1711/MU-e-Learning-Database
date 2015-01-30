@@ -1,0 +1,5 @@
+<h2>Instructors</h2>
+{{#each instructor in model}}
+<p>{{#link-to 'instructor' instructor}}{{instructor.full_name}}{{/link-to}}</p>
+{{/each}}
+{{outlet}}
