@@ -13,16 +13,25 @@ Project structure based on [todo-flask-ember](https://github.com/gaganpreet/todo
 (Assuming Ubuntu 12.x with Python installed)
 
 Clone the repo: 
+
     https://github.com/mdchoate/MU-e-Learning-Database.git
     cd MU-e-Learning-Database
+
 Install pip:
+
     apt-get install python-pip
+
 Install virtualenv and create a local Python environment:
+
     apt-get install python-virtualenv
     virtualenv env
+
 Change to newly-created environment:
+
     source env/bin/activate
+
 Install dependencies using pip:
+
     pip install requirements.txt
 
 ## Run
