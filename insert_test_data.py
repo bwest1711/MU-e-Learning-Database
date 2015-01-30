@@ -2,12 +2,14 @@ from main import create_app
 from database import db
 from api.models.instructor import Instructor
 from api.models.course import Course
+from api.models.course_version import CourseVersion
 
 app = create_app()
 app.config.from_object('config.Config')
 
 with app.test_request_context():
     db.session.query(Instructor).delete()
+    db.session.query(Course).delete()
     db.session.commit()
 
     db.session.add(Instructor('Eddard Stark', 'starke4@wu.edu'))

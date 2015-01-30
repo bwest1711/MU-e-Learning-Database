@@ -9,7 +9,7 @@ Project structure based on [todo-flask-ember](https://github.com/gaganpreet/todo
 
 ## Setup
 
-(Assuming Ubuntu 12.x with Python installed)
+(Assuming Ubuntu ~12.x with Python installed)
 
 Clone the repo: 
 
@@ -35,4 +35,4 @@ Install dependencies using pip:
 
 ## Run
 
-Run init\_db.py to initialize the database tables. init\_test\_data.py will insert some placeholder data into the database. There are two helper scripts, run\_dev.py and run\_prod.py, to start the server.
+Run init\_db.py to initialize the database tables. insert\_test\_data.py will insert some placeholder data into the database. There are two helper scripts, run\_dev.py and run\_prod.py, to start the server.
