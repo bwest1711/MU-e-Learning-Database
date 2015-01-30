@@ -1,12 +1,11 @@
 ## Miami University e-Learning Course Database
 
-Repository for Miami University's online course database, for use by the
-Advanced Learning Technologies group. 
+Repository for Miami University's online course database, for use by the Advanced Learning Technologies group. 
 
 * Backend API written in Python using Flask-Restful (/api directory)
 * Frontend written in Javascript using Ember.js (/client directory)
 
-Project structure based on [todo-flask-ember](https://github.com/gaganpreet/todo-flask-ember) by [Gaganpreet Arora](https://github.com/gaganpreet).
+Project structure based on [todo-flask-ember](https://github.com/gaganpreet/todo-flask-ember) by [Gaganpreet Singh Arora](https://github.com/gaganpreet).
 
 ## Setup
 
@@ -14,7 +13,7 @@ Project structure based on [todo-flask-ember](https://github.com/gaganpreet/todo
 
 Clone the repo: 
 
-    https://github.com/mdchoate/MU-e-Learning-Database.git
+    git clone https://github.com/mdchoate/MU-e-Learning-Database.git
     cd MU-e-Learning-Database
 
 Install pip:
@@ -36,6 +35,4 @@ Install dependencies using pip:
 
 ## Run
 
-Run init\_db.py to initialize the database tables. init\_test\_data.py will
-insert some placeholder data into the database. There are two helper scripts, 
-run\_dev.py and run\_prod.py, to start the server.
+Run init\_db.py to initialize the database tables. init\_test\_data.py will insert some placeholder data into the database. There are two helper scripts, run\_dev.py and run\_prod.py, to start the server.
