@@ -9,7 +9,9 @@ Project structure based on [todo-flask-ember](https://github.com/gaganpreet/todo
 
 ## Setup
 
-(Assuming Ubuntu ~12.x with Python installed)
+(Assuming Ubuntu ~12.x with Python installed.)
+
+### Server-side
 
 Clone the repo: 
 
@@ -33,6 +35,37 @@ Install dependencies using pip:
 
     pip install requirements.txt
 
+(Optional) Initialize the database and insert test data: 
+
+    python init_db.py
+    python insert_test_data.py
+
+At this point, the API is ready to run. However, you should still build the client-side Ember app before running the server. 
+
+### Client-side
+
+Install the most recent versions of npm and node.js: 
+
+    apt-add-repository ppa:chris-lea/node.js
+    apt-get update
+    apt-get install nodejs
+
+Install ember-cli and bower:
+
+    npm install -g ember-cli
+    npm install -g bower
+
+Change to 'client' directory and install dependencies:
+
+    npm install
+    bower install
+
+Run the automatic builder (this will watch the folder for changes and re-build the client-side app if needed):
+
+    ember build --watch
+
 ## Run
 
-Run init\_db.py to initialize the database tables. insert\_test\_data.py will insert some placeholder data into the database. There are two helper scripts, run\_dev.py and run\_prod.py, to start the server.
+Once you have all dependencies installed, the client-side app built, and the database initialized, use one of the helper scripts to run the server (in the project's root directory): 
+
+    python run_dev.py
