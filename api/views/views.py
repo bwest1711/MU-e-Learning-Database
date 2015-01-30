@@ -1,9 +1,9 @@
 from flask.ext import restful
 from flask.ext.restful import reqparse
 from flask import Blueprint
-from api.models import Todo
-from api.models import Instructor
-from api.models import Course
+from api.models.todo import Todo
+from api.models.instructor import Instructor
+from api.models.course import Course
 from database import db
 
 api_app = Blueprint('api_app', __name__, url_prefix='/api')

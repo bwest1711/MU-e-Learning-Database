@@ -1,7 +1,7 @@
 from main import create_app
 from database import db
-from api.models import Instructor
-from api.models import Course
+from api.models.instructor import Instructor
+from api.models.course import Course
 
 app = create_app()
 app.config.from_object('config.Config')
