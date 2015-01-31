@@ -1,4 +1,5 @@
 from database import db
+from sqlalchemy.orm import relationship, backref
 
 class CourseVersion(db.Model):
     __tablename__ = 'course_version'
@@ -14,7 +15,9 @@ class CourseVersion(db.Model):
         self.label = label
 
     def __repr__(self):
-        return '<course:{0} instr:{1} "{2}">'.format(self.course_id, self.instructor_id, self.label)
+        return '<course:{0} instr:{1} "{2}">'.format(self.course_id, 
+                                                     self.instructor_id, 
+                                                     self.label)
 
     @property
     def to_json(self):
