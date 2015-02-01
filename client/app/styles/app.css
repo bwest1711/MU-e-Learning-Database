@@ -1,3 +1,9 @@
+a:focus, a:active {
+  border: 0;
+  outline: none;
+  -moz-outline-style: none;
+}
+
 .activeLink {
   font-weight: bold;
 }

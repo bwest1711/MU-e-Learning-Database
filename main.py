@@ -6,7 +6,7 @@ from flask import Flask
 
 from client.views import client_app
 from todo.views import root_app
-from api.resources import api_app
+from api.routes import api_app
 
 
 def create_app():
