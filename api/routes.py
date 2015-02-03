@@ -37,7 +37,7 @@ InstructorAPI, InstructorsAPI = make_wrapper_api(
     model_class=Instructor, 
     singular_name='instructor', 
     plural_name='instructors', 
-    reqd_args={ 'full_name': str }, 
+    reqd_args={ 'fullName': str }, 
     opt_args={ 'email': str })
 api.add_resource(InstructorAPI, '/instructors/<int:id>')
 api.add_resource(InstructorsAPI, '/instructors')
@@ -55,7 +55,7 @@ CourseVersionAPI, CourseVersionsAPI = make_wrapper_api(
     model_class=CourseVersion, 
     singular_name='courseVersion', 
     plural_name='courseVersion', 
-    reqd_args={ 'course_id': int, 'instructor_id': int, 'label': str }, 
+    reqd_args={ 'course': int, 'instructor': int, 'label': str }, 
     opt_args={})
 api.add_resource(CourseVersionAPI, '/courseVersions/<int:id>')
 api.add_resource(CourseVersionsAPI, '/courseVersions')
@@ -64,8 +64,7 @@ CourseSectionAPI, CourseSectionsAPI = make_wrapper_api(
     model_class=CourseSection, 
     singular_name='courseSection', 
     plural_name='courseSection', 
-    reqd_args={
-        'course_version_id': int, 'instructor_id': int, 'semester': str }, 
+    reqd_args={ 'courseVersion': int, 'instructor': int, 'semester': str }, 
     opt_args={})
 api.add_resource(CourseSectionAPI, '/courseSections/<int:id>')
 api.add_resource(CourseSectionsAPI, '/courseSections')
@@ -74,7 +73,7 @@ QualityReviewAPI, QualityReviewsAPI = make_wrapper_api(
     model_class=QualityReview, 
     singular_name='qualityReview', 
     plural_name='qualityReviews', 
-    reqd_args={'course_version_id': int, 'stage': str}, 
+    reqd_args={'courseVersion': int, 'stage': str}, 
     opt_args={})
 api.add_resource(QualityReviewAPI, '/qualityReviews/<int:id>')
 api.add_resource(QualityReviewsAPI, '/qualityReviews')
