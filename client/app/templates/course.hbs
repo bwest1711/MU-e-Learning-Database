@@ -1,2 +1,10 @@
-<b>{{department}}{{number}}</b> {{title}}
+<p><b>{{department}}{{number}}</b> {{title}}</p>
+<h3>Course Versions</h3>
+{{#each version in courseVersions}}
+<p>
+{{#link-to 'instructor' version.instructor}}
+{{version.instructor.fullName}}
+{{/link-to}} - {{version.label}}
+</p>
+{{/each}}
 {{outlet}}

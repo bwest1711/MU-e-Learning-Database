@@ -1,2 +1,12 @@
-<p><b>{{full_name}}</b> {{email}}</p>
+<p><b>{{fullName}}</b> {{email}}</p>
+<h4>Course Versions Authored</h4>
+{{#each version in courseVersions}}
+<ul>
+<li>{{version.course.title}} - {{version.label}}</li>
+</ul>
+{{/each}}
+<h4>Course Sections Taught</h4>
+{{#each section in courseSections}}
+<p>{{section.courseVersion.course.title}} - {{section.semester}}</p>
+{{/each}}
 {{outlet}}

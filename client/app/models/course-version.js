@@ -1,11 +1,11 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  courseId: DS.belongsTo('course'),
-  instructorId: DS.belongsTo('instructor'),
+  course: DS.belongsTo('course', { async: true }),
+  instructor: DS.belongsTo('instructor', { async: true }),
   label: DS.attr('string'),
-  courseSections: DS.hasMany('courseSection'),
-  qualityReviews: DS.hasMany('qualityReview'),
+  courseSections: DS.hasMany('courseSection', { async: true }),
+  qualityReviews: DS.hasMany('qualityReview', { async: true }),
   copyrightCompliant: DS.attr('boolean'),
   adaCompliant: DS.attr('boolean'),
   adaComplianceYear: DS.attr('number')

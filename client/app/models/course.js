@@ -4,5 +4,5 @@ export default DS.Model.extend({
   title: DS.attr('string'),
   department: DS.attr('string'),
   number: DS.attr('number'),
-  courseVersions: DS.hasMany('courseVersion')
+  courseVersions: DS.hasMany('courseVersion', { async: true })
 });
