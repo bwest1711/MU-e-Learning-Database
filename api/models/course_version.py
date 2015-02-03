@@ -10,6 +10,7 @@ class CourseVersion(db.Model):
     label = db.Column(db.String(64))
 
     courseSections = relationship('CourseSection')
+    qualityReviews = relationship('QualityReview')
 
     def __init__(self, course, instructor, label):
         self.course = course
@@ -23,5 +24,6 @@ class CourseVersion(db.Model):
             'course': self.course,
             'instructor': self.instructor,
             'label': self.label,
-            'courseSections': [cs.id for cs in self.courseSections]
+            'courseSections': [cs.id for cs in self.courseSections],
+            'qualityReviews': [qr.id for qr in self.qualityReviews]
             }
