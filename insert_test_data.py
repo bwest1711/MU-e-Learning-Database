@@ -20,7 +20,7 @@ with app.test_request_context():
     db.session.add(Instructor("Eddard Stark", "starke4@wu.edu"))
     db.session.add(Instructor("Ramsay Snow", "snowr72@dfcc.org"))
     db.session.add(Instructor("Cersei Lannister", "lannisc2@ucr.edu"))
-    db.session.add(Instructor("Peter Baelish", "baelisp@vale.edu"))
+    db.session.add(Instructor("Petyr Baelish", "baelisp@vale.edu"))
     db.session.add(Instructor("Jon Snow", "snowj41@wu.edu"))
 
     db.session.add(Course("Intro to Criminal Justice", "CJS", "111"))

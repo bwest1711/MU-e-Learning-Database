@@ -8,5 +8,13 @@ export default DS.Model.extend({
   qualityReviews: DS.hasMany('qualityReview', { async: true }),
   copyrightCompliant: DS.attr('boolean'),
   adaCompliant: DS.attr('boolean'),
-  adaComplianceYear: DS.attr('number')
+  adaComplianceYear: DS.attr('number'),
+
+  labelDisplay: function() {
+    if(this.get('label') === '') {
+      return 'Unlabeled version';
+    } else {
+      return this.get('label');
+    }
+  }.property('label')
 });

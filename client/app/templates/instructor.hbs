@@ -2,11 +2,17 @@
 <h4>Course Versions Authored</h4>
 {{#each version in courseVersions}}
 <ul>
-<li>{{version.course.title}} - {{version.label}}</li>
+  <li>
+  {{#link-to 'course' version.course}}{{version.course.title}}{{/link-to}}
+  - {{version.labelDisplay}}</li>
 </ul>
 {{/each}}
 <h4>Course Sections Taught</h4>
 {{#each section in courseSections}}
-<p>{{section.courseVersion.course.title}} - {{section.semester}}</p>
+<ul>
+  <li>
+  {{#link-to 'course' section.courseVersion.course}}{{section.courseVersion.course.title}}{{/link-to}}
+  - {{section.semester}}</li>
+</ul>
 {{/each}}
 {{outlet}}
