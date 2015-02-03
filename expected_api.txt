@@ -1,0 +1,46 @@
+ "courses": [{
+
+    "id": 1,
+    "title": "foo",
+    "department": "foo",
+    "number": 123,
+    "courseVersions": [<CourseVersion ids>]
+
+}],
+"courseVersions": [{
+
+    "id": 1,
+    "courseId": <Course id>,
+    "instructorId": <Instructor id>,
+    "label": "foo",
+    "courseSections": [<CourseSection ids>],
+    "qualityReviews": [<QualityReview ids>],
+    "copyrightCompliant": true,
+    "adaCompliant": true,
+    "adaComplianceYear": 123
+
+}],
+"courseSections": [{
+
+    "id": 1,
+    "courseVersion": <Course id>,
+    "instructor": <Instructor id>,
+    "semester": "foo"
+
+}],
+"instructors": [{
+
+    "id": 1,
+    "fullName": "foo",
+    "email": "foo",
+    "courseVersions": [<CourseVersion ids>],
+    "courseSections": [<CourseSection ids>]
+
+}],
+"qualityReviews": [{
+
+    "id": 1,
+    "courseVersion": <CourseVersion id>,
+    "stage": "foo"
+
+}]
