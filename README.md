@@ -37,8 +37,8 @@ Install dependencies using pip:
 
 Initialize the database and insert test data: 
 
-    python init_db.py
-    python insert_test_data.py
+    env/bin/python init_db.py
+    env/bin/python insert_test_data.py
 
 At this point, the API is ready to run. However, you should still build the client-side Ember app before running the server. 
 
@@ -68,6 +68,6 @@ Run the automatic builder (this will watch the folder for changes and re-build t
 
 Once you have all dependencies installed, the client-side app built, and the database initialized, use one of the helper scripts to run the server (in the project's root directory): 
 
-    python run_dev.py
+    env/bin/python run_dev.py
 
 The server should now be serving a page at http://localhost:5000/.
