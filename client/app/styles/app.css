@@ -7,3 +7,8 @@ a:focus, a:active {
 .activeLink {
   font-weight: bold;
 }
+
+.edit-icon {
+  font-size: 0.8em;
+  color: #bbbbbb;
+}

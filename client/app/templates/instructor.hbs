@@ -46,7 +46,7 @@
       </tr>
       {{#each cs in courseSections}}
       <tr>
-        <td>{{#link-to 'course' cs.course}}{{cs.course.labelDisplayShort}}{{/link-to}}</td>
+        <td>{{#link-to 'course' cs.course}}{{cs.courseVersion.course.displayShort}}{{/link-to}}</td>
         <td>{{#link-to 'courseVersion' cs.courseVersion}}{{cs.courseVersion.label}}{{/link-to}}</td>
         <td>{{cs.semester}}</td>
       </tr>
