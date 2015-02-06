@@ -4,8 +4,9 @@
     <div class="navbar-inner">
       <ul class="nav navbar-nav">
         <li>{{#link-to 'search' activeClass='activeLink'}}Search{{/link-to}}</li>
-        <li>{{#link-to 'courses' activeClass='activeLink' currentWhen='courses course'}}Courses{{/link-to}}</li>
-        <li>{{#link-to 'instructors' activeClass='activeLink' currentWhen='instructors instructor'}}Instructors{{/link-to}}</li>
+        <li>{{#link-to 'courseVersions' activeClass='activeLink' current-when='courseVersions courseVersion'}}Course Versions{{/link-to}}</li>
+        <li>{{#link-to 'courses' activeClass='activeLink' current-when='courses course'}}Courses{{/link-to}}</li>
+        <li>{{#link-to 'instructors' activeClass='activeLink' current-when='instructors instructor'}}Instructors{{/link-to}}</li>
         <li>{{#link-to 'tools' activeClass='activeLink'}}Tools{{/link-to}}</li>
       </ul>
       <ul class="nav navbar-nav navbar-right" style="padding-right:10px;">

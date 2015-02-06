@@ -1,18 +1,61 @@
-<p><b>{{fullName}}</b> {{email}}</p>
-<h4>Course Versions Authored</h4>
-{{#each version in courseVersions}}
-<ul>
-  <li>
-  {{#link-to 'course' version.course}}{{version.course.title}}{{/link-to}}
-  - {{version.labelDisplay}}</li>
-</ul>
-{{/each}}
-<h4>Course Sections Taught</h4>
-{{#each section in courseSections}}
-<ul>
-  <li>
-  {{#link-to 'course' section.courseVersion.course}}{{section.courseVersion.course.title}}{{/link-to}}
-  - {{section.semester}}</li>
-</ul>
-{{/each}}
+<div class="row">
+  <div class="col-md-3">
+  {{#link-to 'instructors' class="strong"}}
+  &lt; Go to Instructors
+  {{/link-to}}
+  <hr>
+  <h3>Instructor Actions</h3>
+  <br>
+  {{#link-to 'courses'}}Email this instructor{{/link-to}}<br><br>
+  {{#link-to 'courses'}}Delete this instructor{{/link-to}}<br><br>
+  </div>
+  <div class="col-md-9" style="border-left: 1px solid #EEE;">
+    <h4>
+      <p><strong>Full Name</strong>: {{fullName}}</p>
+      <p><strong>Email</strong>: {{email}}</p>
+    </h4>
+    <br>
+
+    <h4>Course Versions</h4>
+    <table class="table table-bordered">
+      <tr>
+        <th>Course</th>
+        <th>Label</th>
+        <th>Sections</th>
+        <th>Quality Reviews</th>
+      </tr>
+      {{#each cv in courseVersions}}
+      <tr>
+        <td>{{#link-to 'course' cv.course}}{{cv.course.displayShort}}{{/link-to}}</td>
+        <td>{{#link-to 'courseVersion' cv}}{{cv.labelDisplay}}{{/link-to}}</td>
+        <td>{{cv.courseSections.length}}</td>
+        <td>{{cv.qualityReviews.length}}</td>
+      </tr>
+      {{/each}}
+      <tr style="text-align:center;">
+        <td colspan=4>{{#link-to 'courses'}}Add New Version{{/link-to}}</td>
+      </tr>
+    </table>
+
+    <h4>Course Sections</h4>
+    <table class="table table-bordered">
+      <tr>
+        <th>Course</th>
+        <th>Version</th>
+        <th>Semester</th>
+      </tr>
+      {{#each cs in courseSections}}
+      <tr>
+        <td>{{#link-to 'course' cs.course}}{{cs.course.labelDisplayShort}}{{/link-to}}</td>
+        <td>{{#link-to 'courseVersion' cs.courseVersion}}{{cs.courseVersion.label}}{{/link-to}}</td>
+        <td>{{cs.semester}}</td>
+      </tr>
+      {{/each}}
+      <tr style="text-align:center;">
+        <td colspan=3>{{#link-to 'courses'}}Add New Section{{/link-to}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
 {{outlet}}

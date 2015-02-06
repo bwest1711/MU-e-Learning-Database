@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-md-3">
+  {{#link-to 'courseVersions' class="strong"}}
+  &lt; Go to course versions
+  {{/link-to}}
+  <hr>
+  <h3>Version Actions</h3>
+  <br>
+  {{#link-to 'courses'}}Email course author{{/link-to}}<br><br>
+  {{#link-to 'courses'}}Mark as 'Due for Review'{{/link-to}}<br><br>
+  {{#link-to 'courses'}}Delete this course version{{/link-to}}<br><br>
+  </div>
+  <div class="col-md-9" style="border-left: 1px solid #EEE;">
+    <h4>
+    <p><strong>Course</strong>: {{#link-to 'course' course}}{{course.display}}{{/link-to}}</p>
+    <p><strong>Author</strong>: {{#link-to 'instructor' instructor}}{{instructor.fullName}}{{/link-to}}</p>
+    <p><strong>Email</strong>: {{#link-to 'instructor' instructor}}{{instructor.email}}{{/link-to}}</p>
+    <p><strong>Label</strong>: "{{labelDisplay}}"</p>
+  </h4>
+    <br>
+
+    <p><strong>Type</strong>: {{courseType}}</p>
+    <p><strong>Copyright Compliant</strong>: {{to-yes-no copyrightCompliant}}</p>
+    <p><strong>ADA Compliant</strong>: {{to-yes-no adaCompliant}}</p>
+    <p><strong>Due for Review On</strong>: TODO</p>
+    <br>
+
+    <h4>Quality Reviews</h4>
+    <table class="table table-bordered">
+      <tr>
+        <th>Date Started</th>
+        <th>Date Finished</th>
+        <th>Stage</th>
+      </tr>
+      {{#each qr in qualityReviews}}
+      <tr>
+        <td>July 23rd, 2014</td>
+        <td>August 8th, 2014</td>
+        <td>{{qr.stage}}</td>
+      </tr>
+      {{/each}}
+      <tr style="text-align:center;">
+        <td colspan=3>{{#link-to 'courses'}}Add New Review{{/link-to}}</td>
+      </tr>
+    </table>
+
+    <h4>Course Sections</h4>
+    <table class="table table-bordered">
+      <tr>
+        <th>Instructor</th>
+        <th>Semester</th>
+      </tr>
+      {{#each cs in courseSections}}
+      <tr>
+        <td>{{#link-to 'instructor' cs.instructor}}{{cs.instructor.fullName}}{{/link-to}}</td>
+        <td>{{cs.semester}}</td>
+      </tr>
+      {{/each}}
+      <tr style="text-align:center;">
+        <td colspan=3>{{#link-to 'courses'}}Add New Section{{/link-to}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+{{outlet}}

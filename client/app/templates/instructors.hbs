@@ -1,5 +1,18 @@
 <h2>Instructors</h2>
+<table class="table table-striped">
+  <tr>
+    <th class="col-sm-3">Full Name</th>
+    <th class="col-sm-3">Email</th>
+    <th class="col-sm-2">Versions Authored</th>
+    <th class="col-sm-2">Sections Taught</th>
+  </tr>
 {{#each instructor in model}}
-<p>{{#link-to 'instructor' instructor}}{{instructor.fullName}}{{/link-to}}</p>
+  <tr>
+    <td>{{#link-to 'instructor' instructor}}{{instructor.fullName}}{{/link-to}}</td>
+    <td>{{#link-to 'instructor' instructor}}{{instructor.email}}{{/link-to}}</td>
+    <td>{{instructor.courseVersions.length}}</td>
+    <td>{{instructor.courseSections.length}}</td>
+  </tr>
 {{/each}}
+</table>
 {{outlet}}

@@ -1,10 +1,38 @@
-<p><b>{{department}}{{number}}</b> {{title}}</p>
-<h3>Course Versions</h3>
-{{#each version in courseVersions}}
-<p>
-{{#link-to 'instructor' version.instructor}}
-{{version.instructor.fullName}}
-{{/link-to}} - {{version.labelDisplay}}
-</p>
-{{/each}}
+<div class="row">
+<div class="col-md-3">
+<strong>
+{{#link-to 'courses' class="strong"}}
+< Go to course catalog
+{{/link-to}}
+</strong>
+<hr>
+<h3>Course Actions</h3>
+<br>
+{{#link-to 'courses'}}Rename this course{{/link-to}}<br><br>
+{{#link-to 'courses'}}Delete this course{{/link-to}}<br><br>
+</div>
+<div class="col-md-9" style="border-left: 1px solid #EEE;">
+  <h2>{{display}}</h2>
+
+  <div class="row">
+  <div class="col-md-6"><h4>Course Versions</h4></div>
+  <div class="col-md-6 text-right"><h4>{{#link-to 'courses'}}Add Version{{/link-to}}<h4></div>
+  </div>
+  <table class="table table-bordered">
+    <tr>
+      <th>Instructor</th>
+      <th>Label</th>
+      <th>Sections</th>
+    </tr>
+    {{#each cv in courseVersions}}
+    <tr>
+      <td>{{#link-to 'instructor' cv.instructor}}{{cv.instructor.fullName}}{{/link-to}}</td>
+      <td>{{#link-to 'courseVersion' cv}}{{cv.labelDisplay}}{{/link-to}}</td>
+      <td>{{cv.courseSections.length}}</td>
+    </tr>
+    {{/each}}
+  </table>
+</div>
+</div>
+
 {{outlet}}

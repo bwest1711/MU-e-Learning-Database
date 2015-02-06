@@ -1,5 +1,19 @@
-<h2>Courses</h2>
+<h2>Course Catalog</h2>
+<table class="table table-striped">
+  <tr>
+    <th>Dept.</th>
+    <th>Number</th>
+    <th>Title</th>
+    <th>Number of versions</th>
+  </tr>
 {{#each course in model}}
-<p>{{#link-to 'course' course}}<b>{{course.department}}{{course.number}}</b> {{course.title}}{{/link-to}}</p>
+<tr>
+  <td>{{course.department}}</td>
+  <td>{{course.number}}</td> 
+  <td>{{#link-to 'course' course}}{{course.title}}{{/link-to}}</td>
+  <td>{{course.courseVersions.length}}</td>
+</tr>
 {{/each}}
+</table>
+
 {{outlet}}

@@ -1,2 +1,163 @@
-search page
+<div class="row">
+  <div class="col-md-4" style="padding-right:30px;">
+    <h3>Course Info</h3>
+
+    {{! Course type }}
+    <div class="form-group">
+      <label>Course type</label><br>
+      <div class="btn-group btn-group-justified" data-toggle="buttons">
+        <label class="btn btn-default active">
+          <input type="radio" name="options" id="option1" checked>N/A
+        </label>
+        <label class="btn btn-default">
+          <input type="radio" name="options" id="option2">Online Only
+        </label>
+        <label class="btn btn-default">
+          <input type="radio" name="options" id="option3">Hybrid
+        </label>
+      </div>
+    </div>
+
+    {{! Course title }}
+    <div class="form-group">
+      <label for="courseTitleInput">Course Title</label>
+      <input id="courseTitleInput" type="text" value=title class="form-control">
+    </div>
+
+    {{! CRN }}
+    <div class="form-group">
+      <label for="courseCRNInput">CRN</label>
+      <input id="courseCRNInput" type="text" value=crn class="form-control">
+    </div>
+
+    {{! Instructor }}
+    <div class="form-group">
+      <label for="courseTitleInput">Instructor</label>
+      <select id="instructor-select" data-placeholder="Instructor" class="form-control">
+        <option>Scott Campbell</option>
+        <option>Michael Zmuda</option>
+        <option>William Brinkman</option>
+        <option>Rao Dhananjai</option>
+      </select>
+    </div>
+
+    <h3>Reviews</h3>
+
+    {{! Has previous review }}
+    <div class="form-group">
+      <label>Has Previous Review</label><br>
+      <div class="btn-group btn-group-justified" data-toggle="buttons">
+        <label class="btn btn-default active">
+          <input type="radio" name="options" id="option1" checked>N/A
+        </label>
+        <label class="btn btn-default">
+          <input type="radio" name="options" id="option2">Yes
+        </label>
+        <label class="btn btn-default">
+          <input type="radio" name="options" id="option3">No
+        </label>
+      </div>
+    </div>
+
+    {{! Due for review soon }}
+    <div class="form-group">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" checked=dueForReviewSoon>Due for review soon
+        </label>
+      </div>
+    </div>
+
+    {{! Review timespan }}
+    <div class="form-group">
+      Or, due for review in &lt; 
+      <input type="text" style="display:inline;width:20px;" maxlength="1">
+      years
+    </div>
+
+    <h3>Forms</h3>
+
+    {{! ADA compliance form }}
+    <div class="form-group">
+      <label>ADA Compliance Form</label><br>
+      <div class="btn-group btn-group-justified" data-toggle="buttons">
+        <label class="btn btn-default active">
+          <input type="radio" name="options" id="option1" checked>N/A
+        </label>
+        <label class="btn btn-default">
+          <input type="radio" name="options" id="option2">Yes
+        </label>
+        <label class="btn btn-default">
+          <input type="radio" name="options" id="option3">No
+        </label>
+      </div>
+    </div>
+
+    {{! Copyright compliance form }}
+    <div class="form-group">
+      <label>Copyright Compliance Form</label><br>
+      <div class="btn-group btn-group-justified" data-toggle="buttons">
+        <label class="btn btn-default active">
+          <input type="radio" name="options" id="option1" checked>N/A
+        </label>
+        <label class="btn btn-default">
+          <input type="radio" name="options" id="option2">Yes
+        </label>
+        <label class="btn btn-default">
+          <input type="radio" name="options" id="option3">No
+        </label>
+      </div>
+    </div>
+  </div>
+
+  {{! Matching Courses }}
+  <div class="col-md-8" style="border-left: 1px solid #EEE;">
+    {{!--
+    <div>
+      <span style="float:left;">Sort by: <a href="">Most recent review &#9660;</a></span>
+
+      <a href="" style="float:right;">Export to Spreadsheet</a>
+    </div>
+    <hr>
+
+    {{#each course in asdf}}
+    <div style="margin-top:20px; margin-bottom:20px;">
+      <div class="content-heading" style="border-bottom: 1px solid #EEE;">
+        <h3 style="display:inline;">{{course.title}}</h3>
+        <span class="text-muted">
+          {{#each crn in course.crns}}
+          {{crn}} 
+          {{/each}}
+        </span>
+      </div>
+
+      <table style="width:100%;">
+        <tr>
+          <td><strong>Course type:</strong> {{course.course_type}}</td>
+          <td style="text-align:right">
+            {{#if course.ada_compliant}}
+            <span class="text-success"><strong>&#x2713;</strong>
+              {{else}}
+              <span class="text-danger"><strong>&#x2717;</strong>
+                {{/if}} ADA Compliance Form
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Last revision:</strong> {{relativeDate course.last_revision}}</td>
+            <td style="text-align:right">
+              {{#if course.copy_compliant}}
+              <span class="text-success"><strong>&#x2713;</strong>
+                {{else}}
+                <span class="text-danger"><strong>&#x2717;</strong>
+                  {{/if}} Copyright Compliance Form
+                </td>
+              </tr>
+            </table>
+            {{#link-to 'course' course}}Go to Course Page &gt;{{/link-to}}
+          </div>
+          {{/each}}
+        </div>
+      </div>
+      --}}
 {{outlet}}
