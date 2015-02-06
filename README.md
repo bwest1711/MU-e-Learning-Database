@@ -33,7 +33,7 @@ Change to newly-created environment:
 
 Install dependencies using pip:
 
-    pip install requirements.txt
+    pip install -r requirements.txt
 
 Initialize the database and insert test data: 
 
