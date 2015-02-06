@@ -2,17 +2,19 @@
 
 <table class="table table-striped">
   <tr>
-    <th class="col-sm-1">Course</th>
     <th class="col-sm-2">Author</th>
-    <th class="col-sm-4">Course Version</th>
+    <th class="col-sm-1">Course</th>
+    <th class="col-sm-3">Course Version</th>
+    <th class="col-sm-2">Course Type</th>
     <th class="col-sm-1">Copyright Compliant</th>
     <th class="col-sm-1">ADA Compliant</th>
   </tr>
 {{#each cv in model}}
 <tr>
-  <td>{{#link-to 'course' cv.course}}{{cv.course.displayShort}}{{/link-to}}</td>
   <td>{{#link-to 'instructor' cv.instructor}}{{cv.instructor.fullName}}{{/link-to}}</td>
-  <td>{{#link-to 'courseVersion' cv}}"{{cv.labelDisplay}}"{{/link-to}}</td> 
+  <td>{{#link-to 'course' cv.course}}{{cv.course.displayShort}}{{/link-to}}</td>
+  <td><strong>{{#link-to 'courseVersion' cv}}"{{cv.labelDisplay}}"{{/link-to}}</strong></td> 
+  <td>{{cv.courseType}}</td>
   <td {{bind-attr class="cv.copyrightCompliant:text-success:text-danger"}}>{{to-yes-no cv.copyrightCompliant}}</td>
   <td {{bind-attr class="cv.adaCompliant:text-success:text-danger"}}>{{to-yes-no cv.adaCompliant}}</td>
 </tr>

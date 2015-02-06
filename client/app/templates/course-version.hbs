@@ -20,8 +20,14 @@
     <br>
 
     <p><strong>Type</strong>: {{courseType}}</p>
-    <p><strong>Copyright Compliant</strong>: {{to-yes-no copyrightCompliant}}</p>
-    <p><strong>ADA Compliant</strong>: {{to-yes-no adaCompliant}}</p>
+    <p><strong>Copyright Compliant</strong>: 
+    <span {{bind-attr class="copyrightCompliant:text-success:text-danger"}}>
+      {{to-yes-no copyrightCompliant}}
+    </span></p>
+    <p><strong>ADA Compliant</strong>: 
+    <span {{bind-attr class="adaCompliant:text-success:text-danger"}}>
+      {{to-yes-no adaCompliant}}
+    </span></p>
     <p><strong>Due for Review On</strong>: TODO</p>
     <br>
 
