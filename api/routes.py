@@ -2,20 +2,13 @@
 # facing URLs that the client accesses
 
 import flask
-from flask import Blueprint
 from flask.ext import restful
 from flask.ext import restless
-
-# Most of these are simple CRUD wrappers around the ORM model
 from api.models.instructor import Instructor
 from api.models.course import Course
 from api.models.course_version import CourseVersion
 from api.models.course_section import CourseSection
 from api.models.quality_review import QualityReview
-
-# Original todo-list project code, kept around for sanity-checking reasons
-from api.views.todo import TodoAPI
-from api.views.todo import TodoListAPI
 
 # Some custom helpers to format Flask's responses into Ember format.
 
@@ -74,7 +67,8 @@ def get_postprocessors(model_name):
         'PUT_SINGLE': [post_singular_formatter]
     }
 
-# Flask-Restless API
+# Function to actually create the API, including all CRUD wrappers, search 
+# pages, and static pages
 def create_api(app, db):
     '''Creates a simple wrapper API over each of the model objects listed'''
     all_methods = ['GET', 'POST', 'PUT', 'DELETE']
