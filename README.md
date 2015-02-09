@@ -2,8 +2,8 @@
 
 Repository for Miami University's online course database, for use by the Advanced Learning Technologies group. 
 
-* Backend API written in Python using Flask-Restful (/api directory)
-* Frontend written in Javascript using Ember.js (/client directory)
+* Backend API written in Python using Flask-Restful (`/api` directory)
+* Frontend written in Javascript using Ember.js (`/client` directory)
 
 Project structure based on [todo-flask-ember](https://github.com/gaganpreet/todo-flask-ember) by [Gaganpreet Singh Arora](https://github.com/gaganpreet).
 
@@ -55,7 +55,7 @@ Install ember-cli and bower:
     npm install -g ember-cli
     npm install -g bower
 
-Change to 'client' directory and install dependencies:
+Change to `client` directory and install dependencies:
 
     npm install
     bower install
@@ -70,4 +70,8 @@ Once you have all dependencies installed, the client-side app built, and the dat
 
     env/bin/python run_dev.py
 
-The server should now be serving a page at http://localhost:5000/.
+The server should now be serving a page at `http://localhost:5000/`.
+
+### Helper script
+
+Running the script `dev_clean_restart.sh` will tear-down and re-initialize the database with placeholder values, then execute `run_dev.py`. This is a shortcut and convenient stop-gap measure until better tests are in place. 
