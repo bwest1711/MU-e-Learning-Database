@@ -6,7 +6,7 @@ from flask import Flask
 
 from client.views import client_app
 from todo.views import root_app
-from api.routes import api_app
+from api.routes import create_api
 
 
 def create_app():
@@ -16,5 +16,7 @@ def create_app():
 
     app.register_blueprint(client_app)
     app.register_blueprint(root_app)
-    app.register_blueprint(api_app)
+
+    create_api(app, db)
+
     return app

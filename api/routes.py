@@ -1,79 +1,97 @@
 # This file maps API resources (that implement GET, POST, etc.) to public-
 # facing URLs that the client accesses
 
-from flask.ext import restful
+import flask
 from flask import Blueprint
+from flask.ext import restful
+from flask.ext import restless
 
 # Most of these are simple CRUD wrappers around the ORM model
-from api.views.wrapper import make_wrapper_api
 from api.models.instructor import Instructor
 from api.models.course import Course
 from api.models.course_version import CourseVersion
 from api.models.course_section import CourseSection
 from api.models.quality_review import QualityReview
 
-# Everything else is a custom 'view'
-from api.views.search import SearchAPI
-
 # Original todo-list project code, kept around for sanity-checking reasons
 from api.views.todo import TodoAPI
 from api.views.todo import TodoListAPI
 
-# The API app itself
-api_app = Blueprint('api_app', __name__, url_prefix='/api')
-api = restful.Api(api_app)
+# Some custom helpers to format Flask's responses into Ember format.
 
-# (If this part breaks, something has gone very wrong)
-api.add_resource(TodoListAPI, '/todos')
-api.add_resource(TodoAPI, '/todos/<int:id>')
+# Flask-Restless returns JSON inside a generic top-level "objects" object, 
+# whereas Ember wants the top-level object to have the name of the class, 
+# like { 'instructors': [ {...}, {...} ] }. We can define pre- and post-
+# processors for Flask-Restless's responses to transform them in this way. 
 
-# Custom views
+# Credit to Drew Larson @ drwlrsn.com
 
-api.add_resource(SearchAPI, '/search')
+def get_preprocessors(model_name):
+    '''Gets pre-processing methods for flask-restless to use, customized on a 
+    per-class basis to return the JSON format that Ember expects'''
 
-# Basic CRUD wrappers
+    def pre_ember_formatter(result, **kw):
+        for key in result[model_name]:
+            results[key] = result[model_name][key]
+        del results[model_name]
 
-InstructorAPI, InstructorsAPI = make_wrapper_api(
-    model_class=Instructor, 
-    singular_name='instructor', 
-    plural_name='instructors', 
-    reqd_args={ 'fullName': str }, 
-    opt_args={ 'email': str })
-api.add_resource(InstructorAPI, '/instructors/<int:id>')
-api.add_resource(InstructorsAPI, '/instructors')
+    def pre_patch_ember_formatter(instid, result, **kw):
+        for key in result[model_name]:
+            results[key] = result[model_name][key]
+        del results[model_name]
 
-CourseAPI, CoursesAPI = make_wrapper_api(
-    model_class=Course, 
-    singular_name='course', 
-    plural_name='courses', 
-    reqd_args={ 'title': str, 'department': str, 'number': int }, 
-    opt_args={})
-api.add_resource(CourseAPI, '/courses/<int:id>')
-api.add_resource(CoursesAPI, '/courses')
+    return {
+        'POST': [pre_ember_formatter],
+        'PUT_SINGLE': [pre_patch_ember_formatter]
+    }
 
-CourseVersionAPI, CourseVersionsAPI = make_wrapper_api(
-    model_class=CourseVersion, 
-    singular_name='courseVersion', 
-    plural_name='courseVersion', 
-    reqd_args={ 'course': int, 'instructor': int, 'label': str }, 
-    opt_args={})
-api.add_resource(CourseVersionAPI, '/courseVersions/<int:id>')
-api.add_resource(CourseVersionsAPI, '/courseVersions')
+def get_postprocessors(model_name):
+    '''Gets post-processing methods for flask-restless to use, customized on a 
+    per-class basis to return the JSON format that Ember expects'''
 
-CourseSectionAPI, CourseSectionsAPI = make_wrapper_api(
-    model_class=CourseSection, 
-    singular_name='courseSection', 
-    plural_name='courseSection', 
-    reqd_args={ 'courseVersion': int, 'instructor': int, 'semester': str }, 
-    opt_args={})
-api.add_resource(CourseSectionAPI, '/courseSections/<int:id>')
-api.add_resource(CourseSectionsAPI, '/courseSections')
+    def post_collection_formatter(result, search_params):
+        for key in result.keys():
+            if key != 'objects':
+                del result[key]
+        result[model_name] = result['objects']
+        del result['objects']
 
-QualityReviewAPI, QualityReviewsAPI = make_wrapper_api(
-    model_class=QualityReview, 
-    singular_name='qualityReview', 
-    plural_name='qualityReviews', 
-    reqd_args={'courseVersion': int, 'stage': str}, 
-    opt_args={})
-api.add_resource(QualityReviewAPI, '/qualityReviews/<int:id>')
-api.add_resource(QualityReviewsAPI, '/qualityReviews')
+    # Need to find a better solution for this...
+    # Restless expects all dictionary operations to be done in-place on the 
+    # 'result' object, but what we want to return is a new dict in the format 
+    # { 'model_name': <result dict> }. Copy is the easy way to do it, but 
+    # there must be a more efficient method
+    def post_singular_formatter(result):
+        result[model_name] = [result.copy()]
+        for key in result.keys():
+            if key != model_name:
+                del result[key]
+
+    return { 
+        'GET_SINGLE': [post_singular_formatter],
+        'GET_MANY': [post_collection_formatter],
+        'POST': [post_singular_formatter],
+        'PUT_SINGLE': [post_singular_formatter]
+    }
+
+# Flask-Restless API
+def create_api(app, db):
+    '''Creates a simple wrapper API over each of the model objects listed'''
+    all_methods = ['GET', 'POST', 'PUT', 'DELETE']
+    models = [
+        [Instructor, 'instructors'],
+        [Course, 'courses'],
+        [CourseVersion, 'courseVersions'],
+        [CourseSection, 'courseSections'],
+        [QualityReview, 'qualityReviews']
+    ]
+    manager = flask.ext.restless.APIManager(app, flask_sqlalchemy_db=db)
+
+    for model, model_name in models:
+        postprocessors = get_postprocessors(model_name)
+        preprocessors = get_preprocessors(model_name)
+        manager.create_api(model, 
+                           collection_name=model_name,
+                           preprocessors=preprocessors,
+                           postprocessors=postprocessors,
+                           methods=all_methods)

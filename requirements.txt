@@ -1,5 +1,6 @@
 Flask
 Flask-RESTful
+Flask-Restless
 Flask-SQLAlchemy
 SQLAlchemy
 gunicorn
