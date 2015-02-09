@@ -26,7 +26,7 @@
 
     {{! CRN }}
     <div class="form-group">
-      <label for="courseCRNInput">CRN</label>
+      <label for="courseCRNInput">Has CRN</label>
       <input id="courseCRNInput" type="text" class="form-control">
     </div>
 
@@ -34,6 +34,7 @@
     <div class="form-group">
       <label for="courseTitleInput">Instructor</label>
       <select id="instructor-select" data-placeholder="Instructor" class="form-control">
+        <option></option>
         {{#each instructor in instructors}}
         <option>{{instructor.fullName}}</option>
         {{/each}}
@@ -74,7 +75,7 @@
       years
     </div>
 
-    <h3>Forms</h3>
+    <h3>Compliance</h3>
 
     {{! ADA compliance form }}
     <div class="form-group">
@@ -97,7 +98,7 @@
       <span>ADA Compliance Year: 
         <select id="ada-year-select" style="display:inline;width:100px;" 
           data-placeholder="ADA Year" class="form-control">
-          <option>N/A</option>
+          <option></option>
           <option>1999</option>
           <option>2008</option>
           <option>2012</option>
