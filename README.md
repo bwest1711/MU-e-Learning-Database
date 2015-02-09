@@ -35,6 +35,10 @@ Install dependencies using pip:
 
     pip install -r requirements.txt
 
+Patch one of the dependencies to work with Ember.js (required):
+
+    ./fix_flask_restful.sh
+
 Initialize the database and insert test data: 
 
     env/bin/python init_db.py
