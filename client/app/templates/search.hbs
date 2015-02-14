@@ -21,7 +21,7 @@
     {{! Course title }}
     <div class="form-group">
       <label for="courseTitleInput">Course Title</label>
-      <input id="courseTitleInput" type="text" class="form-control">
+      {{input value=title id="courseTitleInput" type="text" class="form-control"}}
     </div>
 
     {{! CRN }}
@@ -130,7 +130,6 @@
 
       <a href="" style="float:right;">Export to Spreadsheet</a>
     </div>
-    <button {{action 'search'}}>lalalala</button>
     <hr>
 
     {{#each cv in courseVersions}}
