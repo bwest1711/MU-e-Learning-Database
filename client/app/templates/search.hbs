@@ -133,36 +133,7 @@
     <hr>
 
     {{#each cv in courseVersions}}
-    <div style="margin-top:20px; margin-bottom:20px;">
-      <div class="content-heading" style="border-bottom: 1px solid #EEE;">
-        <h3 style="display:inline;">{{cv.instructor.fullName}} - {{cv.course.title}}</h3>
-        <span class="text-muted">CRNs</span>
-      </div>
-
-      <table style="width:100%; margin-top:10px; margin-bottom: 5px;">
-        <tr>
-          <td><strong>Label</strong>: "{{cv.labelDisplay}}"</td>
-          <td style="text-align:right">
-            {{#if cv.adaCompliant}}
-            <span class="glyphicon glyphicon-ok text-success"></span>
-            {{else}}
-            <span class="glyphicon glyphicon-remove text-danger"></span>
-            {{/if}} ADA Compliant
-          </td>
-        </tr>
-        <tr>
-          <td><strong>Last revision</strong>: August 15, 2014</td>
-          <td style="text-align:right">
-            {{#if cv.copyrightCompliant}}
-            <span class="glyphicon glyphicon-ok text-success"></span>
-            {{else}}
-            <span class="glyphicon glyphicon-remove text-danger"></span>
-            {{/if}} Copyright Compliant
-          </td>
-        </tr>
-      </table>
-      {{#link-to 'courseVersion' cv}}Go to Course Version &gt;{{/link-to}}
-    </div>
+      {{search-result cv=cv}}
     {{/each}}
   </div>
 </div>
