@@ -8,7 +8,31 @@ a:focus, a:active {
   font-weight: bold;
 }
 
+.big-field {
+  font-size: 1.3em;
+}
+
 .edit-icon {
-  font-size: 0.8em;
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 0.9em;
   color: #bbbbbb;
+}
+
+a.edit-icon:hover {
+  text-decoration: none;
+}
+
+a.confirm-icon:hover {
+  text-decoration: none;
+}
+
+.confirm-icon {
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 0.8em;
+}
+
+.edit-slim-input {
+  line-height: 0.75em;
 }

@@ -28,10 +28,14 @@ def get_preprocessors(model_name):
             results[key] = result[model_name][key]
         del results[model_name]
 
-    def pre_patch_ember_formatter(instid, result, **kw):
-        for key in result[model_name]:
-            results[key] = result[model_name][key]
-        del results[model_name]
+    # 'data' comes in as e.g. {'instructor':{'fullName':...}}. Flask-Restless
+    # wants it as a group of simple key/value pairs. Will probably fix this
+    # client-side in the near future, then we can ignore it here. TODO
+    def pre_patch_ember_formatter(instance_id, data):
+        top_level = data.keys()[0]
+        for k, v in data[top_level].items():
+            data[k] = v
+        del data[top_level]
 
     return {
         'POST': [pre_ember_formatter],

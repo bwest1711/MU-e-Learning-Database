@@ -11,48 +11,28 @@
   {{#link-to 'courses'}}Delete this course version{{/link-to}}<br><br>
   </div>
   <div class="col-md-9" style="border-left: 1px solid #EEE;">
-    <h4>
-      <p>
-      <strong>Course</strong>: 
-      {{#link-to 'course' course}}{{course.display}}{{/link-to}}
-      <span class="glyphicon glyphicon glyphicon-pencil edit-icon"></span>
-      </p>
-      <p>
-      <strong>Author</strong>: 
-      {{#link-to 'instructor' instructor}}{{instructor.fullName}}{{/link-to}}
-      <span class="glyphicon glyphicon glyphicon-pencil edit-icon"></span>
-      </p>
-      <p>
-      <strong>Email</strong>: 
-      {{#link-to 'instructor' instructor}}{{instructor.email}}{{/link-to}}
-      <span class="glyphicon glyphicon glyphicon-pencil edit-icon"></span>
-      </p>
-      <p>
-      <strong>Label</strong>: 
-      "{{labelDisplay}}" 
-      <span class="glyphicon glyphicon glyphicon-pencil edit-icon"></span>
-      </p>
-  </h4>
+
+    {{edit-field bigField=true editable=false name="Course" value=course.display
+        link-to=course route="course"}}
+
+    {{edit-field bigField=true editable=false name="Author" value=instructor.fullName
+        link-to=instructor route="instructor"}}
+
+    {{edit-field bigField=true editable=false name="Email" value=instructor.email
+        link-to=instructor route="instructor"}}
+
+    {{edit-field action="saveModel" bigField=true editable=true name="Label" value=label}}
+
     <br>
 
-    <p><strong>Type</strong>: {{courseType}}
-    <span class="glyphicon glyphicon glyphicon-pencil edit-icon"></span>
-    </p>
-    <p><strong>Copyright Compliant</strong>: 
-    <span {{bind-attr class="copyrightCompliant:text-success:text-danger"}}>
-      {{to-yes-no copyrightCompliant}}
-    </span>
-    <span class="glyphicon glyphicon glyphicon-pencil edit-icon"></span>
-    </p>
-    <p><strong>ADA Compliant</strong>: 
-    <span {{bind-attr class="adaCompliant:text-success:text-danger"}}>
-      {{to-yes-no adaCompliant}}
-    </span>
-    <span class="glyphicon glyphicon glyphicon-pencil edit-icon"></span>
-    </p>
-    <p><strong>Due for Review On</strong>: TODO
-    <span class="glyphicon glyphicon glyphicon-pencil edit-icon"></span>
-    </p>
+    {{edit-field action="saveModel" editable=true name="Type" value=courseType}}
+
+    {{edit-field action="saveModel" editable=true boolean=true name="ADA Compliant" value=adaCompliant}}
+
+    {{edit-field action="saveModel" editable=true boolean=true name="Copyright Compliant" value=copyrightCompliant}}
+
+    {{edit-field action="saveModel" editable=true name="Due for Review On" value="TODO"}}
+
     <br>
 
     <h4>Quality Reviews</h4>

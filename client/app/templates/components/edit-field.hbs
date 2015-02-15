@@ -1,0 +1,45 @@
+<p {{bind-attr class="bigField:big-field"}}>
+<strong>{{name}}</strong>: 
+
+{{! If a link is provided, field shouldn't be editable }}
+{{#if link-to}}
+  {{#link-to route link-to}}{{value}}{{/link-to}}
+{{else}}
+
+  {{! If field is boolean, show yes/no logic }}
+  {{#if boolean}}
+    {{#if editing}}
+      {{input type="checkbox" name="checkInput" checked=value}}
+    {{/if}}
+    <span {{bind-attr class="value:text-success:text-danger"}}>
+    {{to-yes-no value}}
+    </span>
+
+  {{! Otherwise treat it like a text field }}
+  {{else}}
+    {{#if editing}}
+      {{input type="text" value=value class="edit-slim-input" 
+        focus-out="saveEdit" insert-newline="saveEdit" 
+        escape-press="cancelEdit"}}
+    {{else}}
+      {{#if value}}
+      <span>{{value}}</span>
+      {{else}}
+      <span class="text-muted">[No value]</span>
+      {{/if}}
+    {{/if}}
+
+  {{/if}}
+{{/if}}
+
+{{! Side icon enables editing and saves changes }}
+{{#if editable}}
+  {{#if editing}}
+  <a class="glyphicon glyphicon-ok confirm-icon text-primary" {{action "saveEdit"}}></a>
+  {{else}}
+  <a class="glyphicon glyphicon-pencil edit-icon" {{action "startEdit"}}></a>
+  {{/if}}
+{{/if}}
+
+</p>
+{{yield}}
