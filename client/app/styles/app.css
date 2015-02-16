@@ -36,3 +36,65 @@ a.confirm-icon:hover {
 .edit-slim-input {
   line-height: 0.75em;
 }
+
+.quality-review-container {
+  border: 1px solid #ddd;
+  padding: 20px;
+  width: 470px;
+  display: inline-block;
+}
+
+.quality-review-instructions {
+  padding-top: 10px;
+  word-wrap: break-word;
+}
+
+.quality-review-controls {
+  margin-top: 20px;
+}
+
+.timeline-container {
+  position: relative;
+  clear: both;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.timeline-item {
+  float: left;
+  text-align: center;
+}
+
+.timeline-text {
+  word-wrap: break-word;
+  width: 60px;
+  margin-bottom: 5px;
+}
+
+.timeline-item + .timeline-item {
+  margin-left: 30px;
+}
+
+.circle {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 50%;
+  font-size: 32px;
+  text-align: center;
+}
+
+.circle-done {
+  color: #fff;
+  background: #aaddff;
+}
+
+.circle-todo {
+  color: #fff;
+  background: #ddd;
+}
+
+.circle-highlight {
+  color: #fff;
+  background: #327bba;
+}

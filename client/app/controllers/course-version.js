@@ -1,15 +1,21 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
+  isUnderReview: false,
   actions: {
     saveModel: function () {
       this.get('model').save();
-      alert('saved model');
     },
-    deleteModel: function() {
+    deleteModel: function () {
       this.get('model').deleteRecord();
       this.get('model').save();
-      alert('deleted record');
+      this.transitionToRoute('courseVersions');
+    },
+    startReview: function () {
+      this.set('isUnderReview', true);
+    },
+    finalizeReview: function () {
+      this.set('isUnderReview', false);
     }
   }
 });
