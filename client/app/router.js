@@ -12,7 +12,9 @@ Router.map(function() {
   this.resource("instructors", function() {});
   this.resource("instructor", { path: '/instructors/:instructor_id' });
 
-  this.resource("courseVersions", function() {});
+  this.resource("courseVersions", function() {
+    this.route('new');
+  });
   this.resource("courseVersion", { path: '/courseVersions/:courseVersion_id' });
 
   this.route("tools");

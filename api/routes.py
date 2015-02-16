@@ -23,10 +23,11 @@ def get_preprocessors(model_name):
     '''Gets pre-processing methods for flask-restless to use, customized on a 
     per-class basis to return the JSON format that Ember expects'''
 
-    def pre_ember_formatter(result, **kw):
-        for key in result[model_name]:
-            results[key] = result[model_name][key]
-        del results[model_name]
+    def pre_ember_formatter(data, **kw):
+        top_level = data.keys()[0]
+        for key in data[top_level]:
+            data[key] = data[top_level][key]
+        del data[top_level]
 
     # 'data' comes in as e.g. {'instructor':{'fullName':...}}. Flask-Restless
     # wants it as a group of simple key/value pairs. Will probably fix this

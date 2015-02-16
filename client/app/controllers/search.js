@@ -4,6 +4,18 @@ export default Ember.ObjectController.extend({
   queryParams: ['title'],
   title: "",
 
+  filteredCourses: function () {
+    var courseVersions = this.get('courseVersions');
+    var searchTitle = this.get('title');
+
+    if (searchTitle !== "") {
+      courseVersions = courseVersions.filter(function(item, index, self) {
+        return item.get('course').get('title').toLowerCase().indexOf(searchTitle.toLowerCase()) > -1;
+      });
+    }
+    return courseVersions;
+  }.property('title'),
+
   filteredCourseVersions: function() {
     var self = this;
 

@@ -1,0 +1,30 @@
+<tr>
+  <td>{{input type="text" placeholder="Label" value=label}}</td>
+  <td>
+    <select id="instructorSelect">
+      {{#each instructor in instructors}}
+      <option>{{instructor.fullName}}</option>
+      {{/each}}
+    </select>
+  </td>
+  <td>
+    <select id="courseSelect">
+      {{#each course in courses}}
+      <option>{{course.displayShort}}</option>
+      {{/each}}
+    </select>
+  </td>
+  <td>
+    <select id="courseTypeSelect">
+      <option>Online Only</option>
+      <option>Hybrid</option>
+    </select>
+  <td>{{input type="checkbox" checked=copyrightCompliant}}</td>
+  <td>{{input type="checkbox" checked=adaCompliant}}</td>
+</tr>
+<tr>
+  <td style="text-align:center" colspan=6>
+    <button class="btn btn-primary" {{action "create"}}>Create</button>
+    {{#link-to 'courseVersions.index' class="btn btn-default"}}Cancel{{/link-to}}
+  </td>
+</tr>

@@ -19,11 +19,11 @@ with app.test_request_context():
 
     items = [
         # (Full Name, Email)
-        Instructor("Eddard Stark", "starke4@wu.edu"),       # 1
-        Instructor("Ramsay Snow", "snowr72@dfcc.org"),      # 2
-        Instructor("Cersei Lannister", "lannisc2@ucr.edu"), # 3
-        Instructor("Petyr Baelish", "baelisp@vale.edu"),    # 4
-        Instructor("Jon Snow", "snowj41@wu.edu"),           # 5
+        Instructor("Jamie Langford", "langfojc@miamioh.edu"),  # 1
+        Instructor("Marc Rothwell", "rothwemm@miamioh.edu"),   # 2
+        Instructor("Raymond Gordon", "gordonrt2@miamioh.edu"), # 3
+        Instructor("Jean Collins", "collinjg@miamioh.edu"),    # 4
+        Instructor("Kristen Hall", "hallka10@miamioh.edu"),    # 5
 
         # (Title, Department, Number)
         Course("Intro to Criminal Justice", "CJS", "111"),     # 1
@@ -33,13 +33,13 @@ with app.test_request_context():
         Course("Principles of Acting", "THE", "131"),          # 5
 
         # (Course, Instructor, Label, Type, Copy Cmp., ADA Cmp., ADA Year)
-        CourseVersion(1, 1, "Ned's version", "Hybrid", True, False),               # 1
-        CourseVersion(1, 1, "New version Fall '13", "Online Only", False, True),        # 2
+        CourseVersion(1, 1, "Hybrid version", "Hybrid", True, False),               # 1
+        CourseVersion(1, 1, "New version Fall '13", "Online Only", False, True),    # 2
         CourseVersion(2, 2, "Emphasis on muscular system", "Hybrid", False, False), # 3
-        CourseVersion(3, 3, "", "Online Only", True, False),                            # 4
-        CourseVersion(3, 4, "Honors section", "Hybrid", True, True),              # 5
-        CourseVersion(4, 4, "", "Online Only", True, True),                            # 6
-        CourseVersion(5, 4, "", "Online Only", True, True),                            # 7
+        CourseVersion(3, 3, "Sprint version", "Online Only", True, False),          # 4
+        CourseVersion(3, 4, "Honors section", "Hybrid", True, True),                # 5
+        CourseVersion(4, 4, "", "Online Only", True, True),                         # 6
+        CourseVersion(5, 4, "", "Online Only", True, True),                         # 7
 
         # (Course Version, Instructor, Semester)
         CourseSection(2, 1, "F13"), # 1

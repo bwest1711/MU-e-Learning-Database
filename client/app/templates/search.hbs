@@ -32,8 +32,8 @@
 
     {{! Instructor }}
     <div class="form-group">
-      <label for="courseTitleInput">Instructor</label>
-      <select id="instructor-select" data-placeholder="Instructor" class="form-control">
+      <label for="instructor-select">Instructor</label>
+      <select id="instructor-select" class="form-control">
         <option></option>
         {{#each instructor in instructors}}
         <option>{{instructor.fullName}}</option>
@@ -132,7 +132,7 @@
     </div>
     <hr>
 
-    {{#each cv in courseVersions}}
+    {{#each cv in filteredCourses}}
       {{search-result cv=cv}}
     {{/each}}
   </div>

@@ -35,14 +35,13 @@
 
     <br>
 
-
     {{#if isUnderReview}}
       {{quality-review-timeline action="finalizeReview"}}
     {{else}}
     <button class="btn btn-primary btn-lg" {{action "startReview"}}>Begin quality review</button>
     {{/if}}
-      
 
+    <br>
     <br>
     <h4>Past Quality Reviews</h4>
     <table class="table table-bordered">
