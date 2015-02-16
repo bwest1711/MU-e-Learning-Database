@@ -5,8 +5,6 @@ Repository for Miami University's online course database, for use by the Advance
 * Backend API written in Python using Flask-Restful (`/api` directory)
 * Frontend written in Javascript using Ember.js (`/client` directory)
 
-Project structure based on [todo-flask-ember](https://github.com/gaganpreet/todo-flask-ember) by [Gaganpreet Singh Arora](https://github.com/gaganpreet).
-
 ## Setup
 
 (Assuming Ubuntu ~12.x with Python installed.)
@@ -79,3 +77,9 @@ The server should now be serving a page at `http://localhost:5000/`.
 ### Helper script
 
 Running the script `dev_clean_restart.sh` will tear-down and re-initialize the database with placeholder values, then execute `run_dev.py`. This is a shortcut and convenient stop-gap measure until better tests are in place. 
+
+## Credits
+
+Project structure based on [todo-flask-ember](https://github.com/gaganpreet/todo-flask-ember) by [Gaganpreet Singh Arora](https://github.com/gaganpreet).
+
+Key components are [Flask](http://flask.pocoo.org/), [Flask-Restful](https://flask-restful.readthedocs.org/en/0.3.1/), [Flask-Restless](https://flask-restless.readthedocs.org/en/latest/), [SQLAlchemy](http://www.sqlalchemy.org/), [Ember.js](http://emberjs.com/), and [Twitter Bootstrap](http://getbootstrap.com/).
