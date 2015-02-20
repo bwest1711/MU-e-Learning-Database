@@ -16,6 +16,12 @@ export default Ember.ObjectController.extend({
     },
     finalizeReview: function () {
       this.set('isUnderReview', false);
+      var thisModel = this.get('model');
+      var newReview = this.store.createRecord('qualityReview', {
+        courseVersion: thisModel,
+        stage: 'Complete'
+      });
+      newReview.save();
     }
   }
 });
