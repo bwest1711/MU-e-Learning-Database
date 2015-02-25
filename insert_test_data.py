@@ -1,3 +1,4 @@
+from datetime import date
 from main import create_app
 from database import db
 from api.models.instructor import Instructor
@@ -47,11 +48,11 @@ with app.test_request_context():
         CourseSection(7, 4, "S14"), # 3
 
         # (Course Version, Stage)
-        QualityReview(2, "Author Review"),   # 1
-        QualityReview(3, "Author Revision"), # 2
-        QualityReview(3, "Author Review"),   # 3
-        QualityReview(5, "ID Sign-off"),     # 4
-        QualityReview(6, "Discussion"),      # 5
+        QualityReview(2, "Author Review",   date(2015, 1, 13), date(2015, 2, 20)),
+        QualityReview(3, "Author Revision", date(2013, 6, 9), date(2013, 9, 29)),
+        QualityReview(3, "Author Review",   date(2012, 7, 3), date(2012, 7, 5)),
+        QualityReview(5, "ID Sign-off",     date(2014, 4, 20), date(2014, 5, 12)),
+        QualityReview(6, "Discussion",      date(2013, 9, 25), date(2013, 10, 14)),
     ]
 
     for item in items:

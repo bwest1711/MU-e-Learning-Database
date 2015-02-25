@@ -19,6 +19,8 @@ export default Ember.ObjectController.extend({
       var thisModel = this.get('model');
       var newReview = this.store.createRecord('qualityReview', {
         courseVersion: thisModel,
+        startDate: new Date(),
+        endDate: new Date(),
         stage: 'Complete'
       });
       newReview.save();

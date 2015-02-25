@@ -35,6 +35,7 @@ export default Ember.Component.extend({
 
   actions: {
     next: function () {
+      Ember.$("#signeeBox").val("");
       this.set('certifyChecked', false);
       this.set('stage', this.get('stage') + 1);
     },

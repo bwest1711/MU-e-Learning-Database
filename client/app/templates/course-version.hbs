@@ -31,7 +31,7 @@
 
     {{edit-field action="saveModel" editable=true boolean=true name="Copyright Compliant" value=copyrightCompliant}}
 
-    {{edit-field action="saveModel" editable=true name="Due for Review On" value="TODO"}}
+    {{edit-field action="saveModel" editable=false name="Due for Review On" value="TODO"}}
 
     <br>
 
@@ -48,13 +48,13 @@
       <tr>
         <th>Date Started</th>
         <th>Date Finished</th>
-        <th>Stage</th>
+        <th>Notes and Attachments</th>
       </tr>
       {{#each qr in qualityReviews}}
       <tr>
-        <td>July 23rd, 2014</td>
-        <td>August 8th, 2014</td>
-        <td>{{qr.stage}}</td>
+        <td>{{to-short-date qr.startDate}}</td>
+        <td>{{to-short-date qr.endDate}}</td>
+        <td><a href="">View ></a></td>
       </tr>
       {{/each}}
     </table>
