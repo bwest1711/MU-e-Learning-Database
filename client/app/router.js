@@ -18,6 +18,9 @@ Router.map(function() {
   this.resource("courseVersion", { path: '/courseVersions/:courseVersion_id' });
 
   this.route("tools");
+  this.route("courseSections");
+  this.resource("courseSection", function() {});
+  this.resource("departments", function() {});
 });
 
 export default Router;

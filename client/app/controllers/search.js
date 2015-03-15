@@ -9,7 +9,7 @@ export default Ember.ObjectController.extend({
     var searchTitle = this.get('title');
 
     if (searchTitle !== "") {
-      courseVersions = courseVersions.filter(function(item, index, self) {
+      courseVersions = courseVersions.filter(function(item) {
         return item.get('course').get('title').toLowerCase().indexOf(searchTitle.toLowerCase()) > -1;
       });
     }
