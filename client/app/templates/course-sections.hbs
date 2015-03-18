@@ -2,13 +2,16 @@
 
 <table class="table table-striped table-bordered">
   <tr>
+    <th class="col-sm-1">CRN</th>
     <th class="col-sm-3">Section</th>
     <th class="col-sm-3">Version</th>
     <th class="col-sm-1">Semester</th>
-    <th class="col-sm-2">Quality Attested</th>
+    <th class="col-sm-2">Compliance Attested</th>
+    <th class="col-sm-2">Compliance Due On</th>
   </tr>
 {{#each cs in model}}
 <tr>
+  <td>{{cs.crn}}</td>
   <td>
     {{#link-to 'courseSection' cs}}
     <strong>{{cs.courseVersion.course.department.abbreviation}} {{cs.courseVersion.course.number}} - {{cs.instructor.fullName}}</strong>
@@ -22,6 +25,11 @@
     {{else}}
     <span class="glyphicon glyphicon-remove"></span> {{to-yes-no cs.attested}}
     {{/if}}
+  </td>
+  <td>
+    <span {{bind-attr class="cs.attested:text-success"}}>
+      {{to-short-date cs.attestedDueDate}}
+    </span>
   </td>
 </tr>
 {{/each}}
