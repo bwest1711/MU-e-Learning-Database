@@ -1,0 +1,25 @@
+{{! TODO }}
+{{#if editing}}
+  <td>{{input type="text" value=dept.abbreviation}}</td>
+  <td>{{input type="text" value=dept.name}}</td>
+  <td>{{input type="text" value=dept.admin}}</td>
+  <td>{{input type="text" value=dept.adminEmail}}</td>
+  <td>
+    <button class="btn btn-sm btn-primary" {{action "saveEdit"}}>
+      Save
+    </button>
+    <button class="btn btn-sm btn-default" {{action "cancelEdit"}}>
+      Cancel
+    </button>
+  </td>
+{{else}}
+  <td>{{dept.abbreviation}}</td>
+  <td>{{dept.name}}</td>
+  <td>{{dept.admin}}</td>
+  <td>{{dept.adminEmail}}</td>
+  <td>
+    <button class="btn btn-sm btn-default" {{action "startEdit"}}>Edit</button> 
+    <a {{action "confirmAndDelete"}}><span style="margin-left:5px;" class="glyphicon glyphicon-remove edit-icon"></span></a>
+  </td>
+{{/if}}
+{{yield}}

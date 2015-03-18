@@ -11,7 +11,7 @@
 {{#link-to 'courses'}}Delete this course{{/link-to}}
 </div>
 <div class="col-md-9" style="border-left: 1px solid #EEE;">
-  <h2>{{display}}</h2>
+  <h2>{{department.abbreviation}} {{number}} {{title}}</h2>
   <br>
   <h4>Course Versions</h4>
   <table class="table table-bordered">
@@ -22,6 +22,7 @@
     </tr>
     {{#each cv in courseVersions}}
     <tr>
+
       <td>{{#link-to 'instructor' cv.instructor}}{{cv.instructor.fullName}}{{/link-to}}</td>
       <td>{{#link-to 'courseVersion' cv}}{{cv.labelDisplay}}{{/link-to}}</td>
       <td>{{cv.courseSections.length}}</td>

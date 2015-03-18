@@ -1,1 +1,67 @@
+<div class="row">
+  <div class="col-md-3">
+  {{#link-to "courseSections" class="strong"}}
+  &lt; Go to course sections
+  {{/link-to}}
+  <hr>
+  <h3>Section Actions</h3>
+  <br>
+  {{#link-to "courses"}}Email course instructor{{/link-to}}<br><br>
+  <a {{action "deleteModel"}}>Delete this course section</a><br><br>
+  </div>
+  <div class="col-md-9" style="border-left: 1px solid #EEE;">
+
+    {{edit-field bigField=true editable=false name="Course" value=courseVersion.course.title
+        link-to=courseVersion.course route="course"}}
+
+    {{edit-field bigField=true editable=false name="Version" value=courseVersion.labelDisplay
+        link-to=courseVersion route="courseVersion"}}
+
+    {{edit-field bigField=true editable=false name="Instructor" value=instructor.fullName
+        link-to=instructor route="instructor"}}
+
+    {{edit-field bigField=true editable=false name="Email" value=instructor.email
+        link-to=instructor route="instructor"}}
+
+    <br>
+
+    {{edit-field name="Dept. Administrator" value=courseVersion.course.department.admin}}
+
+    {{edit-field name="Dept. Admin. Email" value=courseVersion.course.department.adminEmail}}
+
+    <br>
+
+    {{edit-field editable=false name="Compliance Attested" boolean=true value=attested}}
+
+    {{edit-field action="saveModel" editable=false name="Due On" value=attestedDueDate}}
+
+    <h3>Section Compliance</h3>
+    {{#if attested}}
+    <span class="text-success"><span class="glyphicon glyphicon-check"></span> Certified Compliant on {{to-short-date attestedDate}} by {{attestedSignee}}</span>
+    {{else}}
+      {{#if attesting}}
+      <div style="border:1px solid #222; padding:10px;">
+        <p>The instructor of the course should verify that all materials used for instruction are compliant with all necessary standards, including both the university standards and divisional standards listed here:</p>
+        <p><a href="http://www.miamioh.edu/">Example Standards</a></p>
+        <p><a href="http://www.miamioh.edu/">Another Set of Standards</a></p>
+        <p>Once the instructor has ensured the course is compliant, they should check the boxes below and type their name in the text box, then hit "Certify Compliance" to submit.</p>
+        <br>
+        <p>{{input id="check1" type="checkbox"}} <label for="check1">I certify that the course meets [some standard].</label></p>
+        <p>{{input id="check2" type="checkbox"}} <label for="check2">I certify that the materials in the course are [some standard].</label></p>
+        <p>{{input id="check3" type="checkbox"}} <label for="check3">I certify that the course is [some standard].</label></p>
+        <p><strong>Signee</strong></p>
+        {{input type="text" placeholder="Name" value=signee}}
+        <br>
+        <br>
+        <button class="btn btn-primary" {{action "saveAttest"}}>Certify Compliance</button>
+      </div>
+      {{else}}
+      <button class="btn btn-lg btn-primary" {{action "startAttesting"}}>Certify Course Compliance</button>
+      {{/if}}
+    {{/if}}
+
+    <br>
+  </div>
+</div>
+
 {{outlet}}

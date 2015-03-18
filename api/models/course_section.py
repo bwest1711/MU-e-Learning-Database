@@ -28,8 +28,14 @@ class CourseSection(db.Model):
     # with all necessary standards 
     attested = db.Column(db.Boolean)
 
+    # Date that the course must be attested by
+    attestedDueDate = db.Column(db.Date)
+
     # Date that the instructor attested to the section's compliance
     attestedDate = db.Column(db.Date)
+
+    # Name of the instructure that attested to the section's compliance
+    attestedSignee = db.Column(db.String(255))
 
 
     def __init__(self, courseVersion, instructor, semester, 

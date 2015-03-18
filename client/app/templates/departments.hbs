@@ -1,16 +1,14 @@
-<h1>Departments</h1>
+<h2>Departments</h2>
 <table class="table">
   <tr>
     <th>Abbreviation</th>
     <th>Name</th>
     <th>Administrator</th>
     <th>Admin. Email</th>
+    <th></th>
   </tr>
-  <tr>
-    <td>CSE</td>
-    <td>Computer Science</td>
-    <td>Dr. James Kiper</td>
-    <td>kiperjd@miamioh.edu</td>
-  </tr>
+  {{#each dept in model}}
+    {{department-edit-row dept=dept}}
+  {{/each}}
 </table>
 {{outlet}}

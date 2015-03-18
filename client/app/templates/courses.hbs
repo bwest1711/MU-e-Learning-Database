@@ -8,9 +8,9 @@
   </tr>
 {{#each course in model}}
 <tr>
-  <td>{{course.department}}</td>
+  <td>{{course.department.abbreviation}}</td>
   <td>{{course.number}}</td> 
-  <td>{{#link-to 'course' course}}{{course.title}}{{/link-to}}</td>
+  <td><strong>{{#link-to 'course' course}}{{course.title}}{{/link-to}}</strong></td>
   <td>{{course.courseVersions.length}}</td>
 </tr>
 {{/each}}

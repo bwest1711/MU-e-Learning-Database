@@ -26,15 +26,12 @@
       </tr>
       {{#each cv in courseVersions}}
       <tr>
-        <td>{{#link-to 'course' cv.course}}{{cv.course.displayShort}}{{/link-to}}</td>
+        <td>{{#link-to 'course' cv.course}}{{cv.course.department.abbreviation}} {{cv.course.number}}{{/link-to}}</td>
         <td>{{#link-to 'courseVersion' cv}}{{cv.labelDisplay}}{{/link-to}}</td>
         <td>{{cv.courseSections.length}}</td>
         <td>{{cv.qualityReviews.length}}</td>
       </tr>
       {{/each}}
-      <tr style="text-align:center;">
-        <td colspan=4>{{#link-to 'courses'}}Add New Version{{/link-to}}</td>
-      </tr>
     </table>
 
     <h4>Course Sections</h4>
@@ -46,14 +43,16 @@
       </tr>
       {{#each cs in courseSections}}
       <tr>
-        <td>{{#link-to 'course' cs.course}}{{cs.courseVersion.course.displayShort}}{{/link-to}}</td>
+        <td>
+          {{#link-to 'course' cs.course}}
+          {{cs.courseVersion.course.department.abbreviation}} 
+          {{cs.courseVersion.course.number}}
+          {{/link-to}}
+        </td>
         <td>{{#link-to 'courseVersion' cs.courseVersion}}{{cs.courseVersion.label}}{{/link-to}}</td>
         <td>{{cs.semester}}</td>
       </tr>
       {{/each}}
-      <tr style="text-align:center;">
-        <td colspan=3>{{#link-to 'courses'}}Add New Section{{/link-to}}</td>
-      </tr>
     </table>
   </div>
 </div>

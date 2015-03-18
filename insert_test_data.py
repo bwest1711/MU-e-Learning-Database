@@ -29,24 +29,24 @@ with app.test_request_context():
 
     items = [
 
-        # (Full Name, Email)
-        Instructor("Jamie Langford", "langfojc@miamioh.edu"),  # 1
-        Instructor("Marc Rothwell", "rothwemm@miamioh.edu"),   # 2
-        Instructor("Raymond Gordon", "gordonrt2@miamioh.edu"), # 3
-        Instructor("Jean Collins", "collinjg@miamioh.edu"),    # 4
-        Instructor("Kristen Hall", "hallka10@miamioh.edu"),    # 5
+        # (Full Name, Email, UniqueID)
+        Instructor("Jamie Langford" , "langfojc@miamioh.edu"  , "langfojc"  ) , # 1
+        Instructor("Marc Rothwell"  , "rothwemm@miamioh.edu"  , "rothwemm"  ) , # 2
+        Instructor("Raymond Gordon" , "gordonrt2@miamioh.edu" , "gordonrt2" ) , # 3
+        Instructor("Jean Collins"   , "collinjg@miamioh.edu"  , "collinjg"  ) , # 4
+        Instructor("Kristen Hall"   , "hallka10@miamioh.edu"  , "hallka10"  ) , # 5
 
         # (Title, Department, Number)
-        Course("Intro to Criminal Justice", 2, "111"),     # 1
-        Course("Human Anatomy", 1, "202"),                 # 2
-        Course("Politics and National Issues", 3, "182"),  # 3
-        Course("Intro to Financial Accounting", 4, "221"), # 4
-        Course("Principles of Acting", 5, "131"),          # 5
+        Course("Intro to Criminal Justice"     , 2 , "111") , # 1
+        Course("Human Anatomy"                 , 1 , "202") , # 2
+        Course("Politics and National Issues"  , 3 , "182") , # 3
+        Course("Intro to Financial Accounting" , 4 , "221") , # 4
+        Course("Principles of Acting"          , 5 , "131") , # 5
 
         # (Course, Instructor, Label, Type, Copy Cmp., ADA Cmp., ADA Year)
         CourseVersion(1, 1, "Hybrid version", "Hybrid", True, False),               # 1
         CourseVersion(1, 1, "New version Fall '13", "Online Only", False, True),    # 2
-        CourseVersion(2, 2, "Emphasis on muscular system", "Hybrid", False, False), # 3
+        CourseVersion(2, 2, "202 Master Version", "Hybrid", False, False), # 3
         CourseVersion(3, 3, "Sprint version", "Online Only", True, False),          # 4
         CourseVersion(3, 4, "Honors section", "Hybrid", True, True),                # 5
         CourseVersion(4, 4, "", "Online Only", True, True),                         # 6
@@ -57,12 +57,12 @@ with app.test_request_context():
         CourseSection(3, 2, "F13"), # 2
         CourseSection(7, 4, "S14"), # 3
 
-        # (Course Version, Stage)
-        QualityReview(2, 0, date(2015, 1, 13), date(2015,  2, 20)),
-        QualityReview(3, 1, date(2013, 6,  9), date(2013,  9, 29)),
-        QualityReview(3, 2, date(2012, 7,  3), date(2012,  7,  5)),
-        QualityReview(5, 3, date(2014, 4, 20), date(2014,  5, 12)),
-        QualityReview(6, 4, date(2013, 9, 25), date(2013, 10, 14)),
+        # (Course Version, Stage, Start Date, End Date)
+        QualityReview(2, 0, date(2015, 1, 13), date(2015,  2, 20)), # 1
+        QualityReview(3, 2, date(2012, 7,  3), date(2012,  7,  5)), # 3
+        QualityReview(3, 1, date(2013, 6,  9), date(2013,  9, 29)), # 2
+        QualityReview(5, 3, date(2014, 4, 20), date(2014,  5, 12)), # 4
+        QualityReview(6, 4, date(2011, 9, 25), date(2011, 10, 14)), # 5
 
         # (Name, Abbreviation, Administrator, Admin Email, Aliases)
         Department("Biology", "BIO", "Daniel Whittington", "whittidj@miamioh.edu", ""),          # 1

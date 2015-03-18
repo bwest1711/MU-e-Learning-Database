@@ -12,7 +12,7 @@
   </div>
   <div class="col-md-9" style="border-left: 1px solid #EEE;">
 
-    {{edit-field bigField=true editable=false name="Course" value=course.display
+    {{edit-field bigField=true editable=false name="Course" value=course.title
         link-to=course route="course"}}
 
     {{edit-field bigField=true editable=false name="Author" value=instructor.fullName
@@ -43,6 +43,7 @@
 
     <br>
     <br>
+
     <h4>Past Quality Reviews</h4>
     <table class="table table-bordered">
       <tr>
@@ -71,9 +72,6 @@
         <td>{{cs.semester}}</td>
       </tr>
       {{/each}}
-      <tr style="text-align:center;">
-        <td colspan=3>{{#link-to "courses"}}Add New Section{{/link-to}}</td>
-      </tr>
     </table>
   </div>
 </div>

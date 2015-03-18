@@ -1,0 +1,26 @@
+<tr>
+  <td>
+    <select id="instructorSelect">
+      {{#each instructor in instructors}}
+      <option>{{instructor.fullName}}</option>
+      {{/each}}
+    </select>
+  </td>
+  <td>
+    <select id="courseSelect">
+      {{#each cv in courseVersions}}
+      <option>{{cv.labelDisplay}}</option>
+      {{/each}}
+    </select>
+  </td>
+  <td>
+    {{input type="text" placeholder="Semester" value=semester}}
+  </td>
+  <td>{{input type="checkbox" checked=qualityAttested}} <span {{bind-attr class="qualityAttested:text-success:text-danger"}}>{{to-yes-no qualityAttested}}</span></td>
+</tr>
+<tr>
+  <td style="text-align:center" colspan=6>
+    <button class="btn btn-primary" {{action "create"}}>Create</button>
+    {{#link-to 'courseSections.index' class="btn btn-default"}}Cancel{{/link-to}}
+  </td>
+</tr>

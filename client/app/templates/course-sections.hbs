@@ -2,20 +2,27 @@
 
 <table class="table table-striped table-bordered">
   <tr>
-    <th class="col-sm-3">Course</th>
-    <th class="col-sm-2">Instructor</th>
-    <th class="col-sm-2">Semester</th>
-    <th class="col-sm-1">Copyright Compliant</th>
-    <th class="col-sm-1">ADA Compliant</th>
+    <th class="col-sm-3">Section</th>
+    <th class="col-sm-3">Version</th>
+    <th class="col-sm-1">Semester</th>
+    <th class="col-sm-2">Quality Attested</th>
   </tr>
-{{#each cv in model}}
+{{#each cs in model}}
 <tr>
-  <td><strong>{{#link-to 'courseVersion' cv}}"{{cv.labelDisplay}}"{{/link-to}}</strong></td> 
-  <td>{{#link-to 'instructor' cv.instructor}}{{cv.instructor.fullName}}{{/link-to}}</td>
-  <td>{{#link-to 'course' cv.course}}{{cv.course.displayShort}}{{/link-to}}</td>
-  <td>{{cv.courseType}}</td>
-  <td {{bind-attr class="cv.copyrightCompliant:text-success:text-danger"}}>{{to-yes-no cv.copyrightCompliant}}</td>
-  <td {{bind-attr class="cv.adaCompliant:text-success:text-danger"}}>{{to-yes-no cv.adaCompliant}}</td>
+  <td>
+    {{#link-to 'courseSection' cs}}
+    <strong>{{cs.courseVersion.course.department.abbreviation}} {{cs.courseVersion.course.number}} - {{cs.instructor.fullName}}</strong>
+    {{/link-to}}
+  </td> 
+  <td>{{#link-to 'courseVersion' cs.courseVersion}}{{cs.courseVersion.labelDisplay}}{{/link-to}}</td>
+  <td>{{cs.semester}}</td>
+  <td {{bind-attr class="cs.attested:text-success:text-danger"}}>
+    {{#if cs.attested}}
+    <span class="glyphicon glyphicon-check"></span> {{to-yes-no cs.attested}}
+    {{else}}
+    <span class="glyphicon glyphicon-remove"></span> {{to-yes-no cs.attested}}
+    {{/if}}
+  </td>
 </tr>
 {{/each}}
 {{outlet}}
