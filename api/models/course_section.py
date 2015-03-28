@@ -24,6 +24,9 @@ class CourseSection(db.Model):
     # e.g. 'F13', 'W15', 'U14'
     semester = db.Column(db.String(16))
 
+    # CRN of the course section
+    crn = db.Column(db.String(16))
+
     # Whether or not the instructor has affirmed that this section is compliant
     # with all necessary standards 
     attested = db.Column(db.Boolean)
@@ -38,13 +41,17 @@ class CourseSection(db.Model):
     attestedSignee = db.Column(db.String(255))
 
 
-    def __init__(self, courseVersion, instructor, semester, 
-                 attested=False, attestedDate=None):
+    def __init__(self, courseVersion, instructor, semester, crn,
+                 attested=False, attestedDate=None, 
+                 attestedDueDate=None, attestedSignee=''):
         self.courseVersion = courseVersion
         self.instructor = instructor
         self.semester = semester
+        self.crn = crn
         self.attested = attested
         self.attestedDate = attestedDate
+        self.attestedDueDate = attestedDueDate
+        self.attestedSignee = attestedSignee
 
     @property
     def to_json(self):

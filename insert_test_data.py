@@ -52,10 +52,14 @@ with app.test_request_context():
         CourseVersion(4, 4, "", "Online Only", True, True),                         # 6
         CourseVersion(5, 4, "", "Online Only", True, True),                         # 7
 
-        # (Course Version, Instructor, Semester)
-        CourseSection(2, 1, "F13"), # 1
-        CourseSection(3, 2, "F13"), # 2
-        CourseSection(7, 4, "S14"), # 3
+        # (Course Version, Instructor, Semester, CRN)
+        CourseSection(2, 1, "F13", "18273", 
+                      attested=True, attestedDueDate=date(2013, 6, 25), 
+                      attestedDate=date(2013, 6, 20), 
+                      attestedSignee="Jamie Langford"), # 1
+        CourseSection(3, 2, "F13", "44953", attestedDueDate=date(2014, 7, 1)), # 2
+        CourseSection(7, 4, "S14", "76182", attestedDueDate=date(2014, 1, 30)), # 3
+        CourseSection(4, 4, "F14", "20315", attestedDueDate=date(2014, 6, 28)), # 4
 
         # (Course Version, Stage, Start Date, End Date)
         QualityReview(2, 0, date(2015, 1, 13), date(2015,  2, 20)), # 1

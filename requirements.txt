@@ -1,6 +1,6 @@
 Flask
 Flask-RESTful
-Flask-Restless
+Flask-Restless==0.16.0
 Flask-SQLAlchemy
 SQLAlchemy
 gunicorn
