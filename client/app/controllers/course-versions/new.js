@@ -1,36 +1,19 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
+  courseTypes: ["Online Only", "Hybrid", "IVDL", "Face-to-Face Enhanced"],
   actions: {
     create: function () {
-      var instructor;
-      var course;
-      var self = this;
-
-      this.store.find('instructor', 1).then(function (value) {
-
-        instructor = value;
-        return self.store.find('course', 1);
-
-      }).then(function (value) {
-
-        course = value;
-
-      }).then(function () {
-
-        var record = self.store.createRecord('courseVersion', {
-          label: self.get('label'),
-          courseType: 'Online Only',
-          instructor: instructor,
-          course: course,
-          adaCompliant: self.get('adaCompliant'),
-          copyrightCompliant: self.get('copyrightCompliant'),
-        });
-
-        record.save();
-      }).then(function () {
-        self.transitionToRoute('courseVersions.index');
+      var record = this.store.createRecord("courseVersion", {
+        label: this.get("versionLabel"),
+        instructor: this.get("selectedAuthor"),
+        course: this.get("selectedCourse"),
+        courseType: this.get("versionType"),
+        copyrightCompliant: this.get("versionCopyrightCompliant"),
+        adaCompliant: this.get("versionAdaCompliant")
       });
+      record.save();
+      this.transitionToRoute("courseVersions.index");
     }
   }
 });

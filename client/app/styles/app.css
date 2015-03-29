@@ -98,3 +98,12 @@ a.confirm-icon:hover {
   color: #fff;
   background: #327bba;
 }
+
+.empty-collection-row {
+  text-align: center;
+  color: #888;
+}
+
+a.action-link {
+  cursor: pointer;
+}

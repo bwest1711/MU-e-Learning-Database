@@ -35,7 +35,7 @@
 {{! Side icon enables editing and saves changes }}
 {{#if editable}}
   {{#if editing}}
-  <a {{action "saveEdit"}}><span class="glyphicon glyphicon-ok confirm-icon text-primary"></span> Save</a>
+  <a class="action-link" {{action "saveEdit"}}><span class="glyphicon glyphicon-ok confirm-icon text-primary"></span> Save</a>
   {{else}}
   <a class="glyphicon glyphicon-pencil edit-icon" {{action "startEdit"}}></a>
   {{/if}}

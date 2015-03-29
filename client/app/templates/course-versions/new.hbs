@@ -7,28 +7,28 @@
   <td>ADA</td>
 </tr>
 <tr>
-  <td>{{input type="text" placeholder="Label" value=label}}</td>
+  <td>{{input type="text" placeholder="Label" value=versionLabel}}</td>
   <td>
-    <select id="instructorSelect">
-      {{#each instructor in instructors}}
-      <option>{{instructor.fullName}}</option>
-      {{/each}}
-    </select>
+    {{view "select"
+    content=instructors
+    optionValuePath="content"
+    optionLabelPath="content.fullName"
+    value=selectedAuthor}}
   </td>
   <td>
-    <select id="courseSelect">
-      {{#each course in courses}}
-      <option>{{course.displayShort}}</option>
-      {{/each}}
-    </select>
+    {{view "select"
+    content=courses
+    optionValuePath="content"
+    optionLabelPath="content.displayShort"
+    value=selectedCourse}}
   </td>
   <td>
-    <select id="courseTypeSelect">
-      <option>Online Only</option>
-      <option>Hybrid</option>
-    </select>
-  <td>{{input type="checkbox" checked=copyrightCompliant}}</td>
-  <td>{{input type="checkbox" checked=adaCompliant}}</td>
+    {{view "select"
+    content=courseTypes
+    value=versionType}}
+  </td>
+  <td>{{input type="checkbox" checked=versionCopyrightCompliant}}</td>
+  <td>{{input type="checkbox" checked=versionAdaCompliant}}</td>
 </tr>
 <tr>
   <td style="text-align:center" colspan=6>

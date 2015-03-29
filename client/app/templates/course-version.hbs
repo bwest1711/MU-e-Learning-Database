@@ -8,7 +8,7 @@
   <br>
   {{#link-to "courses"}}Email course author{{/link-to}}<br><br>
   {{#link-to "courses"}}Mark as "Due for Review"{{/link-to}}<br><br>
-  <a {{action "deleteModel"}}>Delete this course version</a><br><br>
+  <a class="action-link" {{action "deleteModel"}}>Delete this course version</a><br><br>
   </div>
   <div class="col-md-9" style="border-left: 1px solid #EEE;">
 
@@ -38,13 +38,13 @@
     {{#if isUnderReview}}
       {{quality-review-timeline action="finalizeReview"}}
     {{else}}
-    <button class="btn btn-primary btn-lg" {{action "startReview"}}>Begin quality review</button>
+    <button class="btn btn-primary btn-lg" {{action "startReview"}}>Begin compliance review</button>
     {{/if}}
 
     <br>
     <br>
 
-    <h4>Past Quality Reviews</h4>
+    <h4>Past Compliance Reviews</h4>
     <table class="table table-bordered">
       <tr>
         <th>Date Started</th>
@@ -56,6 +56,10 @@
         <td>{{to-short-date qr.startDate}}</td>
         <td>{{to-short-date qr.endDate}}</td>
         <td><a href="">View ></a></td>
+      </tr>
+      {{else}}
+      <tr>
+        <td class="empty-collection-row" colspan=3>No compliance reviews for this version</td>
       </tr>
       {{/each}}
     </table>
@@ -70,6 +74,10 @@
       <tr>
         <td>{{#link-to "instructor" cs.instructor}}{{cs.instructor.fullName}}{{/link-to}}</td>
         <td>{{cs.semester}}</td>
+      </tr>
+      {{else}}
+      <tr>
+        <td class="empty-collection-row" colspan=2>No course sections for this version</td>
       </tr>
       {{/each}}
     </table>

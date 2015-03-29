@@ -2,8 +2,11 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
   actions: {
-    startAttesting: function () {
+    startAttest: function () {
       this.set("attesting", true);
+    },
+    cancelAttest: function () {
+      this.set("attesting", false);
     },
     saveAttest: function () {
       this.set("attested", true);

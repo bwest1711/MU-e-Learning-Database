@@ -16,7 +16,7 @@
     </h4>
     <br>
 
-    <h4>Course Versions</h4>
+    <h4>Authored Course Versions</h4>
     <table class="table table-bordered">
       <tr>
         <th>Course</th>
@@ -30,6 +30,10 @@
         <td>{{#link-to 'courseVersion' cv}}{{cv.labelDisplay}}{{/link-to}}</td>
         <td>{{cv.courseSections.length}}</td>
         <td>{{cv.qualityReviews.length}}</td>
+      </tr>
+      {{else}}
+      <tr>
+        <td class="empty-collection-row" colspan=4>No course versions authored</td>
       </tr>
       {{/each}}
     </table>
@@ -51,6 +55,10 @@
         </td>
         <td>{{#link-to 'courseVersion' cs.courseVersion}}{{cs.courseVersion.label}}{{/link-to}}</td>
         <td>{{cs.semester}}</td>
+      </tr>
+      {{else}}
+      <tr>
+        <td class="empty-collection-row" colspan=3>No course sections taught</td>
       </tr>
       {{/each}}
     </table>

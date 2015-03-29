@@ -12,7 +12,20 @@ export default DS.Model.extend({
   courseSections: DS.hasMany("courseSection", { async: true }),
   qualityReviews: DS.hasMany("qualityReview", { async: true }),
 
-  labelDisplay: function() {
+  fullLabel: function () {
+    var self = this;
+    var course = this.get("course");
+
+    // Combining computed properties with async relationships is really painful, but
+    // there doesn't seem to be any better way to do it than this. 
+    course.then(function (value) {
+      var courseDept = value.get("department").get("abbreviation");
+      var courseNumber = value.get("number");
+      self.set("fullLabel", courseDept + courseNumber + " \"" + self.get("labelDisplay") + "\"");
+    });
+  }.property(),
+
+  labelDisplay: function () {
     if(this.get("label") === "") {
       return "Unlabeled version";
     } else {
@@ -41,7 +54,7 @@ export default DS.Model.extend({
     var latestDate = this.get("latestReview");
 
     // Milliseconds in three years, the specified 'past due' time
-    // (TODO Make this configurable and put it in a bettere place)
+    // (TODO Make this configurable and put it in a better place)
     var maxTimeDiffMillis = 1000*60*60*24*365*3;
 
     return (Date.now() - latestDate.getTime() > maxTimeDiffMillis);

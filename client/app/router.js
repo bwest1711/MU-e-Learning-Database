@@ -30,6 +30,7 @@ Router.map(function() {
   this.resource("departments", function() {
     this.route("new");
   });
+  this.resource("instructions", function() {});
 });
 
 export default Router;
