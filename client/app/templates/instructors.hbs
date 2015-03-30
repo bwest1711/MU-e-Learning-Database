@@ -9,8 +9,8 @@
   </tr>
 {{#each instructor in model}}
   <tr>
-    <td>{{#link-to 'instructor' instructor}}{{instructor.fullName}}{{/link-to}}</td>
-    <td>{{#link-to 'instructor' instructor}}{{instructor.email}}{{/link-to}}</td>
+    <td><strong>{{#link-to 'instructor' instructor}}{{instructor.fullName}}{{/link-to}}</strong></td>
+    <td>{{mail-to instructor.email}}</td>
     <td>{{instructor.uniqueid}}</td>
     <td>{{instructor.courseVersions.length}}</td>
     <td>{{instructor.courseSections.length}}</td>

@@ -12,7 +12,6 @@ export default DS.Model.extend({
 
   displayShort: function() {
 
-    return this.get('number');
-
-  }.property('department', 'number')
+    return this.get('department').get('abbreviation') + " " + this.get('number');
+  }.property('department.abbreviation', 'number')
 });

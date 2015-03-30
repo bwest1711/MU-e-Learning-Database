@@ -6,8 +6,7 @@
   <hr>
   <h3>Version Actions</h3>
   <br>
-  {{#link-to "courses"}}Email course author{{/link-to}}<br><br>
-  {{#link-to "courses"}}Mark as "Due for Review"{{/link-to}}<br><br>
+  {{mail-to instructor.email "Email course author"}}<br><br>
   <a class="action-link" {{action "deleteModel"}}>Delete this course version</a><br><br>
   </div>
   <div class="col-md-9" style="border-left: 1px solid #EEE;">
@@ -18,8 +17,7 @@
     {{edit-field bigField=true editable=false name="Author" value=instructor.fullName
         link-to=instructor route="instructor"}}
 
-    {{edit-field bigField=true editable=false name="Email" value=instructor.email
-        link-to=instructor route="instructor"}}
+    {{edit-field bigField=true editable=false name="Email" value=instructor.email}}
 
     {{edit-field action="saveModel" bigField=true editable=true name="Label" value=label}}
 
@@ -31,9 +29,16 @@
 
     {{edit-field action="saveModel" editable=true boolean=true name="Copyright Compliant" value=copyrightCompliant}}
 
-    {{edit-field action="saveModel" editable=false name="Due for Review On" value="TODO"}}
-
     <br>
+
+    <strong>Due for review on: </strong>
+    {{#if neverReviewed}}
+    <span class="text-muted">[Never reviewed]</span>
+    {{else}}
+    <span>{{to-short-date dueForReviewDate}}</span>
+    {{/if}}
+
+    <br><br>
 
     {{#if isUnderReview}}
       {{quality-review-timeline action="finalizeReview"}}
@@ -67,12 +72,14 @@
     <h4>Course Sections</h4>
     <table class="table table-bordered">
       <tr>
+        <th>CRN</th>
         <th>Instructor</th>
         <th>Semester</th>
       </tr>
       {{#each cs in courseSections}}
       <tr>
-        <td>{{#link-to "instructor" cs.instructor}}{{cs.instructor.fullName}}{{/link-to}}</td>
+        <td><strong>{{#link-to "courseSection" cs}}{{cs.crn}}{{/link-to}}</strong></td>
+        <td>{{cs.instructor.fullName}}</td>
         <td>{{cs.semester}}</td>
       </tr>
       {{else}}

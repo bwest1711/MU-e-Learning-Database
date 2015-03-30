@@ -6,9 +6,9 @@
   <hr>
   <h3>Section Actions</h3>
   <br>
-  {{#link-to "courses"}}Email course instructor{{/link-to}}<br><br>
-  {{#link-to "courses"}}Email compliance late notice to dept. administrator{{/link-to}}<br><br>
-  <a {{action "deleteModel"}}>Delete this course section</a><br><br>
+  {{mail-to instructor.email "Email course instructor"}}<br><br>
+  {{mail-to courseVersion.course.department.adminEmail "Email department administrator"}}<br><br>
+  <a class="action-link" {{action "deleteModel"}}>Delete this course section</a><br><br>
   </div>
   <div class="col-md-9" style="border-left: 1px solid #EEE;">
 
@@ -21,8 +21,7 @@
     {{edit-field bigField=true editable=false name="Instructor" value=instructor.fullName
         link-to=instructor route="instructor"}}
 
-    {{edit-field bigField=true editable=false name="Email" value=instructor.email
-        link-to=instructor route="instructor"}}
+    {{edit-field bigField=true editable=false name="Email" value=instructor.email route="instructor"}}
 
     <br>
 
@@ -53,14 +52,14 @@
         <p><a href="http://www.miamioh.edu/">Another Set of Standards</a></p>
         <p>Once the instructor has ensured the course is compliant, they should check the boxes below and type their name in the text box, then hit "Certify Compliance" to submit.</p>
         <br>
-        <p>{{input id="check1" type="checkbox"}} <label for="check1">I certify that the course meets [...].</label></p>
-        <p>{{input id="check2" type="checkbox"}} <label for="check2">I certify that the materials in the course are [...].</label></p>
-        <p>{{input id="check3" type="checkbox"}} <label for="check3">I certify that the course is [...].</label></p>
+        <p>{{input id="check1" type="checkbox" checked=check1}} <label for="check1">I certify that the course meets [...].</label></p>
+        <p>{{input id="check2" type="checkbox" checked=check2}} <label for="check2">I certify that the materials in the course are [...].</label></p>
+        <p>{{input id="check3" type="checkbox" checked=check3}} <label for="check3">I certify that the course is [...].</label></p>
         <p><strong>Signee</strong></p>
         {{input type="text" placeholder="Name" value=signee}}
         <br>
         <br>
-        <button class="btn btn-primary" {{action "saveAttest"}}>Certify Compliance</button>
+        <button {{bind-attr class=":btn :btn-primary allBoxesChecked::disabled"}}  {{action "saveAttest"}}>Certify Compliance</button>
         <button class="btn btn-default" {{action "cancelAttest"}}>Cancel</button>
       </div>
       {{else}}

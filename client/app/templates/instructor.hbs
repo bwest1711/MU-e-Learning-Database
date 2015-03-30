@@ -6,8 +6,10 @@
   <hr>
   <h3>Instructor Actions</h3>
   <br>
-  {{#link-to 'courses'}}Email this instructor{{/link-to}}<br><br>
-  {{#link-to 'courses'}}Delete this instructor{{/link-to}}<br><br>
+  {{mail-to email "Email this instructor"}}
+  <br><br>
+  <a class="action-link" {{action "deleteModel"}}>Delete this instructor</a>
+  <br><br>
   </div>
   <div class="col-md-9" style="border-left: 1px solid #EEE;">
     <h4>
@@ -22,14 +24,12 @@
         <th>Course</th>
         <th>Label</th>
         <th>Sections</th>
-        <th>Quality Reviews</th>
       </tr>
       {{#each cv in courseVersions}}
       <tr>
         <td>{{#link-to 'course' cv.course}}{{cv.course.department.abbreviation}} {{cv.course.number}}{{/link-to}}</td>
         <td>{{#link-to 'courseVersion' cv}}{{cv.labelDisplay}}{{/link-to}}</td>
         <td>{{cv.courseSections.length}}</td>
-        <td>{{cv.qualityReviews.length}}</td>
       </tr>
       {{else}}
       <tr>

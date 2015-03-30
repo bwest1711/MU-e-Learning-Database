@@ -31,6 +31,7 @@ Router.map(function() {
     this.route("new");
   });
   this.resource("instructions", function() {});
+  this.route("help");
 });
 
 export default Router;
