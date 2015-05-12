@@ -8,8 +8,11 @@ export default Ember.Route.extend({
   },
   model: function() {
     return {
-      instructors: this.store.find('instructor'),
-      courseVersions: this.store.find('courseVersion')
+      courses: this.store.find("course"),
+      departments: this.store.find("department"),
+      instructors: this.store.find("instructor"),
+      courseVersions: this.store.find("courseVersion"),
+      courseSections: this.store.find("courseSection")
     };
   }
 });

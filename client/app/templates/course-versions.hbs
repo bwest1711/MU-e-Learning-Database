@@ -9,11 +9,11 @@
     <th class="col-sm-1">Copyright Compliant</th>
     <th class="col-sm-1">ADA Compliant</th>
   </tr>
-{{#each cv in model}}
+{{#each cv in courseVersions}}
 <tr>
   <td><strong>{{#link-to 'courseVersion' cv}}"{{cv.labelDisplay}}"{{/link-to}}</strong></td> 
-  <td>{{#link-to 'instructor' cv.instructor}}{{cv.instructor.fullName}}{{/link-to}}</td>
-  <td>{{#link-to 'course' cv.course}}{{cv.course.department.abbreviation}} {{cv.course.number}}{{/link-to}}</td>
+  <td>{{cv.instructor.fullName}}</td>
+  <td>{{cv.course.department.abbreviation}} {{cv.course.number}}</td>
   <td>
     {{#if cv.neverReviewed}}
     <span class="text-danger"><span class="glyphicon glyphicon-remove"></span> Never</span> 

@@ -1,0 +1,26 @@
+<div style="margin-top:20px; margin-bottom:20px;">
+  <div class="content-heading" style="border-bottom: 1px solid #EEE;">
+    <h3 style="display:inline;">{{cs.instructor.fullName}} - {{cs.courseVersion.course.title}} ({{cs.crn}})</h3>
+  </div>
+
+  <table style="width:100%; margin-top:10px; margin-bottom: 5px;">
+    <tr>
+      <td><strong>Course Version</strong>: "{{cs.courseVersion.labelDisplay}}"</td>
+      <td style="text-align:right">
+        {{#if cs.attested}}
+        <span class="glyphicon glyphicon-ok text-success"></span>
+        {{else}}
+        <span class="glyphicon glyphicon-remove text-danger"></span>
+        {{/if}} Compliance Attested
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Course type</strong>: {{cs.courseVersion.courseType}}</td>
+      <td style="text-align:right">
+        <strong>Semester</strong>: {{cs.semester}}
+      </td>
+    </tr>
+  </table>
+  {{#link-to 'courseSection' cs}}Go to Course Section &gt;{{/link-to}}
+</div>
+{{yield}}

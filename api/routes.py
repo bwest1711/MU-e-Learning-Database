@@ -1,6 +1,8 @@
 import flask
+from flask import request
 from flask.ext import restful
 from flask.ext import restless
+
 from api.models.instructor import Instructor
 from api.models.course import Course
 from api.models.course_version import CourseVersion
@@ -8,6 +10,7 @@ from api.models.course_section import CourseSection
 from api.models.quality_review import QualityReview
 from api.models.department import Department
 from api.models.note import Note
+from api.banner import course_importer
 
 ################################################################################
 # This file maps API resources (that implement GET, POST, etc.) to public-
@@ -19,6 +22,9 @@ from api.models.note import Note
 # Function to actually create the API, including all CRUD wrappers, search 
 # pages, and static pages
 def create_api(app, db):
+
+    # Add the special Banner import function
+    app.add_url_rule('/api/banner_import', 'banner_import', course_importer(db))
 
     # Methods we want to add to each model
     all_methods = ['GET', 'POST', 'PUT', 'DELETE']

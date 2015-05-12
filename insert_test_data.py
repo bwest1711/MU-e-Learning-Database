@@ -74,7 +74,9 @@ with app.test_request_context():
         Department("Political Science", "POL", "Brian Cameron", "camerobm@miamioh.edu", ""),     # 3
         Department("Accounting", "ACC", "Christine Rouillard", "rouillcd@miamioh.edu", ""),      # 4
         Department("Theatre", "THE", "Timothy Fisher", "fishertb3@miamioh.edu", ""),             # 5
-        Department("History", "HST", "Amber Calvert", "calverag2@miamioh.edu", "")               # 6
+        Department("History", "HST", "Amber Calvert", "calverag2@miamioh.edu", ""),              # 6
+        Department("Communication", "COM", "Steven Banner", "bannersd@miamioh.edu", ""),         # 7
+        Department("Mathematics", "MTH", "Helen Grimauld", "grimauhs@miamioh.edu", "")           # 8
     ]
 
     for item in items:

@@ -27,11 +27,19 @@ Router.map(function() {
   this.resource("courseSection", { path: "/courseSections/:section_id" });
 
   this.route("tools");
+
   this.resource("departments", function() {
     this.route("new");
   });
+
   this.resource("instructions", function() {});
+
   this.route("help");
+
+  this.route("semesterImport", function () {
+    this.route("select");
+    this.route("review");
+  });
 });
 
 export default Router;

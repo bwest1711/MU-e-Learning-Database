@@ -4,7 +4,7 @@
   <tr>
     <th class="col-sm-1">CRN</th>
     <th class="col-sm-3">Section</th>
-    <th class="col-sm-3">Version</th>
+    <th class="col-sm-2">Instructor</th>
     <th class="col-sm-1">Semester</th>
     <th class="col-sm-2">Compliance Attested</th>
     <th class="col-sm-2">Compliance Due On</th>
@@ -14,10 +14,10 @@
   <td>{{cs.crn}}</td>
   <td>
     {{#link-to 'courseSection' cs}}
-    <strong>{{cs.courseVersion.course.department.abbreviation}} {{cs.courseVersion.course.number}} - {{cs.instructor.fullName}}</strong>
+    {{cs.courseVersion.course.department.abbreviation}}{{cs.courseVersion.course.number}} - {{cs.courseVersion.labelDisplay}}
     {{/link-to}}
   </td> 
-  <td>{{#link-to 'courseVersion' cs.courseVersion}}{{cs.courseVersion.labelDisplay}}{{/link-to}}</td>
+  <td>{{cs.instructor.fullName}}</td>
   <td>{{cs.semester}}</td>
   <td {{bind-attr class="cs.attested:text-success:text-danger"}}>
     {{#if cs.attested}}

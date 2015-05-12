@@ -1,7 +1,7 @@
 <tr>
   <th>CRN</th>
-  <th>Instructor</th>
   <th>Version</th>
+  <th>Instructor</th>
   <th>Semester</th>
   <th></th>
   <th></th>
@@ -12,17 +12,17 @@
   </td>
   <td>
     {{view "select"
-    content=instructors
-    optionValuePath="content"
-    optionLabelPath="content.fullName"
-    value=selectedInstructor}}
-  </td>
-  <td>
-    {{view "select"
     content=courseVersions
     optionValuePath="content"
     optionLabelPath="content.fullLabel"
     value=selectedCourseVersion}}
+  </td>
+  <td>
+    {{view "select"
+    content=instructors
+    optionValuePath="content"
+    optionLabelPath="content.fullName"
+    value=selectedInstructor}}
   </td>
   <td>
     {{input type="text" placeholder="Semester" value=sectionSemester}}

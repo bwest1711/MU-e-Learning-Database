@@ -3,10 +3,68 @@
 
     <div class="btn-group btn-group-justified" data-toggle="buttons">
       <label class="btn btn-default active">
-        <input type="radio" name="options" id="option1" checked><strong>Course Versions</strong>
+        {{radio-button name="searchType" value=true checked=searchingVersions}}
+        <strong>Course Versions</strong>
       </label>
       <label class="btn btn-default">
-        <input type="radio" name="options" id="option1"><strong>Course Sections</strong>
+        {{radio-button name="searchType" value=false checked=searchingVersions}}
+        <strong>Course Sections</strong>
+      </label>
+    </div>
+
+    {{! ========== COURSE VERSIONS ========== }}
+    {{#if searchingVersions}}
+
+    <h3>Version Info</h3>
+
+    {{! Title }}
+    <div class="form-group">
+      <label>Title</label><br>
+      {{input type="text" class="form-control" placeholder="N/A" value=searchVersionTitle}}
+    </div>
+
+    {{! Author }}
+    <div class="form-group">
+      <label>Author</label><br>
+      {{view "select" class="form-control" prompt="N/A"
+      value=searchVersionInstructor
+      content=instructors 
+      optionValuePath="content.id"
+      optionLabelPath="content.fullName"}}
+    </div>
+
+    {{! Copyright Compliant }}
+    <label>Copyright Compliant</label><br>
+    <div class="btn-group btn-group-justified" data-toggle="buttons">
+      <label class="btn btn-default active">
+        {{radio-button name="searchVersionCopyCompliant" value=null 
+        checked=searchVersionCopyCompliant}} N/A
+      </label>
+      <label class="btn btn-default">
+        {{radio-button name="searchVersionCopyCompliant" value=true 
+        checked=searchVersionCopyCompliant}} Yes
+      </label>
+      <label class="btn btn-default">
+        {{radio-button name="searchVersionCopyCompliant" value=false 
+        checked=searchVersionCopyCompliant}} No
+      </label>
+    </div>
+    <br>
+
+    {{! ADA Compliant }}
+    <label>ADA Compliant</label><br>
+    <div class="btn-group btn-group-justified" data-toggle="buttons">
+      <label class="btn btn-default active">
+        {{radio-button name="searchVersionADACompliant" value=null 
+        checked=searchVersionADACompliant}} N/A
+      </label>
+      <label class="btn btn-default">
+        {{radio-button name="searchVersionADACompliant" value=true 
+        checked=searchVersionADACompliant}} Yes
+      </label>
+      <label class="btn btn-default">
+        {{radio-button name="searchVersionADACompliant" value=false 
+        checked=searchVersionADACompliant}} No
       </label>
     </div>
 
@@ -14,137 +72,148 @@
 
     {{! Course type }}
     <div class="form-group">
-      <label>Course type</label><br>
-      <div class="btn-group btn-group-justified" data-toggle="buttons">
-        <label class="btn btn-default active">
-          <input type="radio" name="options" id="option1" checked>N/A
-        </label>
-        <label class="btn btn-default">
-          <input type="radio" name="options" id="option2">Online Only
-        </label>
-        <label class="btn btn-default">
-          <input type="radio" name="options" id="option3">Hybrid
-        </label>
-      </div>
+      <label>Course Type</label><br>
+      {{view "select" class="form-control" prompt="N/A"
+      value=searchVersionType
+      content=courseTypes}}
     </div>
 
-    {{! Course title }}
+    {{! Department }}
     <div class="form-group">
-      <label for="courseTitleInput">Course Title</label>
-      {{input value=title id="courseTitleInput" type="text" class="form-control"}}
+      <label>Department</label><br>
+      {{view "select" class="form-control" prompt="N/A"
+      value=searchVersionDepartment
+      content=departments 
+      optionValuePath="content.id"
+      optionLabelPath="content.name"}}
     </div>
+
+    {{! Course }}
+    <div class="form-group">
+      <label>Course</label><br>
+      {{view "select" class="form-control" prompt="N/A"
+      value=searchVersionCourse
+      content=courses 
+      optionValuePath="content.id"
+      optionLabelPath="content.display"}}
+    </div>
+
+
+    <h3>Reviews</h3>
+
+    {{! Due for Review }}
+    <label>Due for Review</label><br>
+    <div class="btn-group btn-group-justified" data-toggle="buttons">
+      <label class="btn btn-default active">
+        {{radio-button name="searchVersionDueForReview" value=null checked=searchVersionDueForReview}} N/A
+      </label>
+      <label class="btn btn-default">
+        {{radio-button name="searchVersionDueForReview" value=true checked=searchVersionDueForReview}} Yes
+      </label>
+      <label class="btn btn-default">
+        {{radio-button name="searchVersionDueForReview" value=false checked=searchVersionDueForReview}} No
+      </label>
+    </div>
+
+
+    {{! ========== COURSE SECTIONS ========== }}
+    {{else}}
+
+    <h3>Section Info</h3>
 
     {{! CRN }}
     <div class="form-group">
-      <label for="courseCRNInput">Has CRN</label>
-      <input id="courseCRNInput" type="text" class="form-control">
+      <label for="courseCRNInput">CRN</label>
+      {{input type="text" class="form-control" value=searchSectionCRN placeholder="N/A"}}
+    </div>
+
+    {{! Semester }}
+    <div class="form-group">
+      <label>Semester</label>
+      {{input type="text" class="form-control" value=searchSectionSemester 
+        placeholder="Semester e.g. \"F14\""}}
     </div>
 
     {{! Instructor }}
     <div class="form-group">
-      <label for="instructor-select">Instructor</label>
-      <select id="instructor-select" class="form-control">
-        <option></option>
-        {{#each instructor in instructors}}
-        <option>{{instructor.fullName}}</option>
-        {{/each}}
-      </select>
+      <label>Instructor</label><br>
+      {{view "select" class="form-control" prompt="N/A"
+      value=searchSectionInstructor
+      content=instructors 
+      optionValuePath="content.id"
+      optionLabelPath="content.fullName"}}
     </div>
 
-    <h3>Reviews</h3>
+    <h3>Course Info</h3>
 
-    {{! Has previous review }}
+    {{! Course type }}
     <div class="form-group">
-      <label>Has Previous Review</label><br>
-      <div class="btn-group btn-group-justified" data-toggle="buttons">
-        <label class="btn btn-default active">
-          <input type="radio" name="options" id="option1" checked>N/A
-        </label>
-        <label class="btn btn-default">
-          <input type="radio" name="options" id="option2">Yes
-        </label>
-        <label class="btn btn-default">
-          <input type="radio" name="options" id="option3">No
-        </label>
-      </div>
+      <label>Course Type</label><br>
+      {{view "select" class="form-control" prompt="N/A"
+      value=searchSectionType
+      content=courseTypes}}
     </div>
 
-    {{! Due for review soon }}
+    {{! Department }}
     <div class="form-group">
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" checked=dueForReviewSoon>Due for review soon
-        </label>
-      </div>
+      <label>Department</label><br>
+      {{view "select" class="form-control" prompt="N/A"
+      value=searchSectionDepartment
+      content=departments 
+      optionValuePath="content.id"
+      optionLabelPath="content.name"}}
     </div>
 
-    {{! Review timespan }}
+    {{! Course }}
     <div class="form-group">
-      Or, due for review in &lt; 
-      <input type="text" style="display:inline;width:20px;" maxlength="1">
-      years
+      <label>Course</label><br>
+      {{view "select" class="form-control" prompt="N/A"
+      value=searchSectionCourse
+      content=courses 
+      optionValuePath="content.id"
+      optionLabelPath="content.display"}}
     </div>
 
-    <h3>Compliance</h3>
+    <h3>Compliance Attested</h3>
 
-    {{! ADA compliance form }}
-    <div class="form-group">
-      <label>ADA Compliant</label><br>
-      <div class="btn-group btn-group-justified" data-toggle="buttons">
-        <label class="btn btn-default active">
-          <input type="radio" name="options" id="option1" checked>N/A
-        </label>
-        <label class="btn btn-default">
-          <input type="radio" name="options" id="option2">Yes
-        </label>
-        <label class="btn btn-default">
-          <input type="radio" name="options" id="option3">No
-        </label>
-      </div>
+    {{! Compliance attested }}
+    <label>Compliance Attested</label><br>
+    <div class="btn-group btn-group-justified" data-toggle="buttons">
+      <label class="btn btn-default active">
+        {{radio-button name="searchSectionAttested" value=null checked=searchSectionAttested}} N/A
+      </label>
+      <label class="btn btn-default">
+        {{radio-button name="searchSectionAttested" value=true checked=searchSectionAttested}} Yes
+      </label>
+      <label class="btn btn-default">
+        {{radio-button name="searchSectionAttested" value=false checked=searchSectionAttested}} No
+      </label>
     </div>
 
-    {{! ADA compliance year }}
-    <div class="form-group">
-      <span>ADA Compliance Year: 
-        <select id="ada-year-select" style="display:inline;width:100px;" 
-          data-placeholder="ADA Year" class="form-control">
-          <option></option>
-          <option>1999</option>
-          <option>2008</option>
-          <option>2012</option>
-        </select>
-      </span>
-    </div>
+    {{/if}}
 
-    {{! Copyright compliance form }}
-    <div class="form-group">
-      <label>Copyright Compliant</label><br>
-      <div class="btn-group btn-group-justified" data-toggle="buttons">
-        <label class="btn btn-default active">
-          <input type="radio" name="options" id="option1" checked>N/A
-        </label>
-        <label class="btn btn-default">
-          <input type="radio" name="options" id="option2">Yes
-        </label>
-        <label class="btn btn-default">
-          <input type="radio" name="options" id="option3">No
-        </label>
-      </div>
-    </div>
   </div>
 
-  {{! Matching Course Versions }}
+  {{! Matching Course Versions or Sections }}
   <div class="col-md-8" style="border-left: 1px solid #EEE;">
     <div>
-      <span style="float:left;">Sort by: <a href="">Most recent review &#9660;</a></span>
-
       <a href="" style="float:right;">Export to Spreadsheet</a>
     </div>
     <hr>
 
-    {{#each cv in filteredCourses}}
-      {{search-result cv=cv}}
-    {{/each}}
+    {{#if searchingVersions}}
+      {{#each cv in filteredCourses}}
+        {{search-result-version cv=cv}}
+      {{else}}
+        <h3 class="text-muted">No results found!</h3>
+      {{/each}}
+    {{else}}
+      {{#each cs in filteredCourses}}
+        {{search-result-section cs=cs}}
+      {{else}}
+        <h3 class="text-muted">No results found!</h3>
+      {{/each}}
+    {{/if}}
   </div>
 </div>
 {{outlet}}

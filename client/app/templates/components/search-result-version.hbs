@@ -1,7 +1,6 @@
 <div style="margin-top:20px; margin-bottom:20px;">
   <div class="content-heading" style="border-bottom: 1px solid #EEE;">
     <h3 style="display:inline;">{{cv.instructor.fullName}} - {{cv.course.title}}</h3>
-    <span class="text-muted">CRNs</span>
   </div>
 
   <table style="width:100%; margin-top:10px; margin-bottom: 5px;">
@@ -16,7 +15,13 @@
       </td>
     </tr>
     <tr>
-      <td><strong>Last revision</strong>: August 15, 2014</td>
+      <td><strong>Last review</strong>: 
+        {{#if cv.neverReviewed}}
+          Never
+        {{else}}
+          {{to-short-date cv.latestReview}}
+        {{/if}}
+      </td>
       <td style="text-align:right">
         {{#if cv.copyrightCompliant}}
         <span class="glyphicon glyphicon-ok text-success"></span>
