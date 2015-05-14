@@ -50,6 +50,7 @@ Patch one of the dependencies to work with Ember.js (required):
     ./fix_flask_restful.sh
 
 Install PostgreSQL:
+
     # Ubuntu
     apt-get install postgresql
     # CentOS / RHEL
