@@ -28,12 +28,12 @@ duplication, overall increase in complexity).
 Of the two, the server is much simpler. It is located mainly in the `/api`
 directory. It uses several libraries that completely smooth over the process of
 moving data from a persistent data store (PostgreSQL) to an API. The web server
-is *Flask*, a fairly minimal and modular server that handles the details of
-speaking HTTP to browsers. A module called *SQLAlchemy* provides an abstraction
+is **Flask**, a fairly minimal and modular server that handles the details of
+speaking HTTP to browsers. A module called **SQLAlchemy** provides an abstraction
 over the database so that _no raw SQL is used_. Instead, interactions are done
-using its object-oriented wrapper. A module called *Flask-RESTful* sits on top
+using its object-oriented wrapper. A module called **Flask-RESTful** sits on top
 of SQLAlchemy, transforming the object-oriented model into a RESTful API.
-Finally, another module, *Flask-Restless*, minimizes boilerplate by generating
+Finally, another module, **Flask-Restless**, minimizes boilerplate by generating
 GET/POST/PUT/DELETE methods for the RESTful objects and automatically
 serializing them to JSON. 
 
@@ -103,7 +103,7 @@ if you choose to re-write all or part of it, you'll probably end up running into
 many of the same issues. _(If I had to do it over, I would probably just make a
 vanilla Rails app with no fancy JavaScript nonsense. Part of the motivation
 behind this choice of architecture was the selfish desire to learn how to write
-apps in this *very* in-demand single-page-app style. That skill landed me a
+apps in this **very** in-demand single-page-app style. That skill landed me a
 great job, so it was clearly worth it. It's probably a good idea for you to
 learn it as well. But still - always use the right tool for the right job.)_
 
