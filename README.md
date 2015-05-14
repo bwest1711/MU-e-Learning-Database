@@ -7,7 +7,7 @@ Repository for Miami University's online-course management system, for use by th
 
 ### Maintainers
 
-New contributors and maintainers of the project should read the included NOTES\_TO\_MAINTAINERS.md file for more useful information about its implementation. 
+New contributors and maintainers of the project should read the included `NOTES_TO_MAINTAINERS.md` file for more useful information about its implementation. 
 
 ## Setup
 
