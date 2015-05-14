@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
+  loading: false,
+
   semesterOptions: [
     { name: "Fall",   letter: "F" },
     { name: "Winter", letter: "W" },
@@ -16,5 +18,19 @@ export default Ember.ObjectController.extend({
     }
     return years;
   }.property(),
-  selectedYear: null
+  selectedYear: null,
+
+  actions: {
+    startImport: function () {
+      if (confirm("Are you sure you wish to begin importing? You *will* be able to review the imported data before it is added. The process may take several minutes.")) {
+        this.set("loading", true);
+        this.transitionTo("semesterImport.review", {
+          queryParams: {
+            semester: this.get("selectedSemester"),
+            year: this.get("selectedYear")
+          }
+        });
+      }
+    }
+  }
 });

@@ -37,11 +37,6 @@ Finally, another module, **Flask-Restless**, minimizes boilerplate by generating
 GET/POST/PUT/DELETE methods for the RESTful objects and automatically
 serializing them to JSON. 
 
-Yes, it is a lot to keep in your head, but it dramatically simplifies the entire
-process of working with REST (and was arrived at via trial and error). Reading
-the docs of these projects, and constructing a simple API of your own that
-utilizes them, will help in understanding the stack. 
-
 [Flask](http://flask.pocoo.org/)
 
 [Flask-RESTful](https://flask-restful.readthedocs.org/en/0.3.2/)
@@ -70,13 +65,34 @@ its local model, it pushes those changes back to the server.
 
 [JavaScript: The Good Parts](https://www.google.com/search?q=javascript+the+good+parts)
 
+About the state of the project: it's "mostly" done, with lots of room for small
+improvements. There were several things that we had the time and capability to
+do, but that we had to wait on external services for, and did not get pushed
+through before the end of the year.
+
 Our implementation is far from perfect, as this was a learning experience for us
 as well. None of us were JS or Python experts going into it, so there's lots of
 code that is neither idiomatic nor efficient. There are some things that were on
 our client's wish-list that we never got around to doing, as well as some things
 that we wanted to fix or improve but didn't have time to work on. 
 
-Here are some ideas for improvement: 
+Here are some requirements that still need to be done:
+
+* CAS single sign-on. The client needs users to be able to sign in with their
+Miami UniqueIDs. This is actually quite easy to implement, but you need an
+actual domain, and SSL enabled - both of which we couldn't do because IT
+services took too long at the end of the year. 
+* Mail system. We implemented a naive mailer that simply sends an email to
+instructors that are teaching a course with a link to their section (so that
+they can assert its compliance). However, this really needs to be bulk-mailed
+using IT's mail queue system (again, it just took too long at the end of the
+year on their end). 
+* Banner import is 80% done, but rough around the edges. All of the data from
+Banner displays client-side; now, it just needs to be saved as part of the model
+and submitted back to the server. 
+
+
+In addition, here are some ideas for improvement, or 'wish-list' items: 
 
 * Pagination. The 'catalog' pages that list every course section, instructor,
 etc. aren't paginated, and load every object at once. If the list of objects
@@ -84,10 +100,6 @@ grows too large (1000's), it could make things very slow. Loading them in
 batches of ~25 and paging between them is a better idea. 
 * Sorting. Our client wanted a way to sort search results by, e.g., last review
 date or most sections. We didn't implement it. 
-* Security. Ember and Flask protect from a huge number of common vulnerabilities
-by default, but we never did a deep inspection to ensure that it was free of
-security holes. At least it's behind the university firewall. Download "The Web
-Application Hacker's Handbook" and have at it. 
 * Testing. We did it mostly by hand, meaning we probably missed tons of little
 edge-cases and errors. Writing quality tests should probably be priority #1, as
 it will let you make changes confidently and will teach you about the system.
@@ -100,28 +112,16 @@ Sorry.)
 with the quality reviews for course versions, but we didn't implement it. There
 is some disk space reserved on the production server for this purpose.
 
-Now for brutal honesty: our implementation is probably more complicated than it
+Now for total honesty: our implementation is probably more complicated than it
 needs to be, and not all of our team members produced consistently high-quality
-code. But still, we fulfilled nearly all of our client's constantly-shifting
-requirements in a limited time frame. Understanding the system will be hard, but
-if you choose to re-write all or part of it, you'll probably end up running into
-many of the same issues. _(If I had to do it over, I would probably just make a
-vanilla Rails app with no fancy JavaScript nonsense. Part of the motivation
-behind this choice of architecture was the selfish desire to learn how to write
-apps in this **very** in-demand single-page-app style. That skill landed me a
-great job, so it was clearly worth it. It's probably a good idea for you to
-learn it as well. But still - always use the right tool for the right job.)_
+code. But still, we fulfilled most of our client's constantly-shifting
+requirements in a limited time frame. 
 
 We hope the project is in a good enough state for you to work with it
 effectively. We tried our best to comment well and communicate throughout the
 code. Our emails are in the Contact section of the readme if you have any
 questions (or if you need a place to direct your hate-mail at!). 
 
-Good luck and try to have fun with it - career-wise, I've found that most
-employers care about senior capstone projects more than any normal class. And
-really, maintaining legacy code is what 90% of programming jobs involve anyways! 
-
     Michael Choate
-    with
     Alex Dana
     Blake Runkle

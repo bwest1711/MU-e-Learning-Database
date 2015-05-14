@@ -16,9 +16,9 @@ patient - if you leave the page, you will have to start over.</p>
       content=yearOptions
       value=selectedYear}}
   </div>
-  {{#link-to 'semesterImport.review' 
-  (query-params semester=selectedSemester year=selectedYear) 
-  class='btn btn-primary'}}
-    Import
-  {{/link-to}}
+  <button class="btn btn-primary" {{action "startImport"}}>Import</button>
+  {{#if loading}}
+    <div class="loader" style="width:100px;height:100px;"></div>
+    <p>Please wait while the server pulls data from BannerWeb! This may take several minutes.</p>
+  {{/if}}
 </form>

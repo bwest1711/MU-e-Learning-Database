@@ -41,6 +41,10 @@ Router.map(function() {
     this.route("review");
     this.route("date");
   });
+
+  this.route("semester-import", function() {
+    this.route("done");
+  });
 });
 
 export default Router;
