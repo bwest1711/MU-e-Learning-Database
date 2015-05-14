@@ -10,7 +10,7 @@ from api.models.course_section import CourseSection
 from api.models.quality_review import QualityReview
 from api.models.department import Department
 from api.models.note import Note
-from api.banner import course_importer
+from api.banner import get_banner_courses
 
 ################################################################################
 # This file maps API resources (that implement GET, POST, etc.) to public-
@@ -24,7 +24,7 @@ from api.banner import course_importer
 def create_api(app, db):
 
     # Add the special Banner import function
-    app.add_url_rule('/api/banner_import', 'banner_import', course_importer(db))
+    app.add_url_rule('/api/banner_import', 'banner_import', get_banner_courses)
 
     # Methods we want to add to each model
     all_methods = ['GET', 'POST', 'PUT', 'DELETE']

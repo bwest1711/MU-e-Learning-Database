@@ -33,7 +33,6 @@ export default Ember.ObjectController.extend({
   // (Yes, this is bad, needs refactoring, etc. if time constraints allow)
   // (It works "well enough" and it's not in need of frequent change)
   filteredCourses: function () {
-    var self = this;
     var courseVersions = this.get("courseVersions");
     var courseSections = this.get("courseSections");
 
@@ -135,7 +134,7 @@ export default Ember.ObjectController.extend({
       });
     }
 
-    if (this.get("searchingVersions")) {
+    if (searchingVersions) {
       return courseVersions;
     } else {
       return courseSections;

@@ -1,40 +1,17 @@
 <div class="row">
   <div class="col-md-3">
-    left
+    {{#link-to 'tools'}}&lt; Go to Tools{{/link-to}}
   </div>
   <div class="col-md-9" style="border-left: 1px solid #EEE;">
 
     <h3>Banner Course Import</h3> 
     
-    <p>Select a semester from which to import courses and sections. This may
-    take a few seconds, or a few minutes (be patient). You
+    <p>Select a semester from which to import courses and sections. You
     <strong>will</strong> be able to review the imported courses before adding
     them to the system.</p>
 
-    <form>
-      <div class="form-group" style="width: 200px;">
-        <label>Semester</label>
-        <select class="form-control">
-          <option>Fall</option>
-          <option>Winter</option>
-          <option>Spring</option>
-          <option>Summer</option>
-        </select>
-      </div>
-      <div class="form-group" style="width: 200px;">
-        <label>Year</label> 
-        <select class="form-control">
-          <option>2013-2014</option>
-          <option>2014-2015</option>
-          <option>2015-2016</option>
-          <option>2016-2017</option>
-          <option>2017-2018</option>
-          <option>2018-2019</option>
-          <option>2019-2020</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-primary">Import</button>
-    </form>
-    {{outlet}}
+    <div>
+      {{outlet}}
+    </div>
   </div>
 </div>

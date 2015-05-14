@@ -39,6 +39,7 @@ Router.map(function() {
   this.route("semesterImport", function () {
     this.route("select");
     this.route("review");
+    this.route("date");
   });
 });
 
