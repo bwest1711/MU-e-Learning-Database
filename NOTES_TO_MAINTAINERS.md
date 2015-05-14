@@ -43,7 +43,9 @@ the docs of these projects, and constructing a simple API of your own that
 utilizes them, will help in understanding the stack. 
 
 [Flask](http://flask.pocoo.org/)
+
 [Flask-RESTful](https://flask-restful.readthedocs.org/en/0.3.2/)
+
 [Flask-Restless](https://flask-restless.readthedocs.org/en/latest/)
 
 The client side is a single-page JavaScript application built using Ember.js. It
@@ -61,8 +63,11 @@ round-trip to request a new page from the server. When the user makes changes to
 its local model, it pushes those changes back to the server. 
 
 [Ember.js](http://emberjs.com/)
+
 [ember-cli](http://www.ember-cli.com/)
+
 [Todo-Flask-Ember (skeleton project)](https://github.com/gaganpreet/todo-flask-ember)
+
 [JavaScript: The Good Parts](https://www.google.com/search?q=javascript+the+good+parts)
 
 Our implementation is far from perfect, as this was a learning experience for us
