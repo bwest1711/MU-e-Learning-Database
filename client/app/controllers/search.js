@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.ObjectController.extend({
+export default Ember.Controller.extend({
 
   queryParams: ['title'],
   title: "",
@@ -33,8 +33,9 @@ export default Ember.ObjectController.extend({
   // (Yes, this is bad, needs refactoring, etc. if time constraints allow)
   // (It works "well enough" and it's not in need of frequent change)
   filteredCourses: function () {
-    var courseVersions = this.get("courseVersions");
-    var courseSections = this.get("courseSections");
+    var courseVersions = this.get("model.courseVersions");
+    console.log(courseVersions);
+    var courseSections = this.get("model.courseSections");
 
     var searchingVersions = this.get("searchingVersions"), 
         searchVersionInstructor = this.get("searchVersionInstructor"),

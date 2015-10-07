@@ -7,12 +7,12 @@ export default Ember.Route.extend({
     }
   },
   model: function() {
-    return {
-      courses: this.store.find("course"),
-      departments: this.store.find("department"),
-      instructors: this.store.find("instructor"),
-      courseVersions: this.store.find("courseVersion"),
-      courseSections: this.store.find("courseSection")
-    };
+    return Ember.RSVP.hash({
+      courses: this.store.findAll("course"),
+      departments: this.store.findAll("department"),
+      instructors: this.store.findAll("instructor"),
+      courseVersions: this.store.findAll("courseVersion"),
+      courseSections: this.store.findAll("courseSection")
+    });
   }
 });

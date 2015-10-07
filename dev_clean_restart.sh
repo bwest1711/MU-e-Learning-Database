@@ -6,8 +6,8 @@ set -e
 echo 'Removing old database.'
 rm -f app.db
 echo 'Setting up new database.'
-env/bin/python init_db.py
+python init_db.py
 echo 'Inserting test data.'
-env/bin/python insert_test_data.py
+python insert_test_data.py
 echo 'Starting server.'
-env/bin/python run_dev.py
+python run_dev.py

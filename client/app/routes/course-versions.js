@@ -2,11 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function() {
-    return { 
-      courseVersions: this.store.find('courseVersion'),
-      instructors: this.store.find('instructor'),
-      departments: this.store.find('department'),
-      courses: this.store.find('course')
-    };
+    return Ember.RSVP.hash({ 
+      courseVersions: this.store.findAll('courseVersion'),
+      instructors: this.store.findAll('instructor'),
+      departments: this.store.findAll('department'),
+      courses: this.store.findAll('course')
+    });
   }
 });

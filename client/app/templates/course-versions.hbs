@@ -9,25 +9,25 @@
     <th class="col-sm-1">Copyright Compliant</th>
     <th class="col-sm-1">ADA Compliant</th>
   </tr>
-{{#each cv in courseVersions}}
+{{#each model as |cv|}}
 <tr>
   <td><strong>{{#link-to 'courseVersion' cv}}"{{cv.labelDisplay}}"{{/link-to}}</strong></td> 
   <td>{{cv.instructor.fullName}}</td>
   <td>{{cv.course.department.abbreviation}} {{cv.course.number}}</td>
   <td>
     {{#if cv.neverReviewed}}
-    <span class="text-danger"><span class="glyphicon glyphicon-remove"></span> Never</span> 
+      <span class="text-danger"><span class="glyphicon glyphicon-remove"></span> Never</span> 
     {{else}}
       {{#if cv.dueForReview}}
-      <span class="glyphicon glyphicon-remove text-danger"></span>
+        <span class="glyphicon glyphicon-remove text-danger"></span>
       {{/if}}
-      <span {{bind-attr class="cv.dueForReview:text-danger"}}>
-        {{to-short-date cv.latestReview}}
+      <span class="{{if cv.dueForReview '' 'text-danger'}}">
+        {{!to-short-date cv.latestReview}}
       </span>
     {{/if}}
   </td>
-  <td {{bind-attr class="cv.copyrightCompliant:text-success:text-danger"}}>{{to-yes-no cv.copyrightCompliant}}</td>
-  <td {{bind-attr class="cv.adaCompliant:text-success:text-danger"}}>{{to-yes-no cv.adaCompliant}}</td>
+  <td class="{{if cv.copyrightCompliant 'text-success' 'text-danger'}}">{{!to-yes-no cv.copyrightCompliant}}</td>
+  <td class="{{if cv.adaCompliant 'text-success' 'text-danger'}}">{{!to-yes-no cv.adaCompliant}}</td>
 </tr>
 {{/each}}
 {{outlet}}

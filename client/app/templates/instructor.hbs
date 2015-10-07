@@ -25,7 +25,7 @@
         <th>Label</th>
         <th>Sections</th>
       </tr>
-      {{#each cv in courseVersions}}
+      {{#each model.courseVersions as |cv|}}
       <tr>
         <td>{{#link-to 'course' cv.course}}{{cv.course.department.abbreviation}} {{cv.course.number}}{{/link-to}}</td>
         <td>{{#link-to 'courseVersion' cv}}{{cv.labelDisplay}}{{/link-to}}</td>

@@ -26,11 +26,11 @@
     {{! Author }}
     <div class="form-group">
       <label>Author</label><br>
-      {{view "select" class="form-control" prompt="N/A"
-      value=searchVersionInstructor
-      content=instructors 
-      optionValuePath="content.id"
-      optionLabelPath="content.fullName"}}
+      {{ember-selectize prompt="N/A"
+        value=searchVersionInstructor
+        content=model.instructors 
+        optionValuePath="content.id"
+        optionLabelPath="content.fullName"}}
     </div>
 
     {{! Copyright Compliant }}
@@ -73,7 +73,7 @@
     {{! Course type }}
     <div class="form-group">
       <label>Course Type</label><br>
-      {{view "select" class="form-control" prompt="N/A"
+      {{ember-selectize prompt="N/A"
       value=searchVersionType
       content=courseTypes}}
     </div>
@@ -81,9 +81,9 @@
     {{! Department }}
     <div class="form-group">
       <label>Department</label><br>
-      {{view "select" class="form-control" prompt="N/A"
+      {{ember-selectize prompt="N/A"
       value=searchVersionDepartment
-      content=departments 
+      content=model.departments 
       optionValuePath="content.id"
       optionLabelPath="content.name"}}
     </div>
@@ -91,9 +91,9 @@
     {{! Course }}
     <div class="form-group">
       <label>Course</label><br>
-      {{view "select" class="form-control" prompt="N/A"
+      {{ember-selectize prompt="N/A"
       value=searchVersionCourse
-      content=courses 
+      content=model.courses 
       optionValuePath="content.id"
       optionLabelPath="content.display"}}
     </div>
@@ -137,9 +137,9 @@
     {{! Instructor }}
     <div class="form-group">
       <label>Instructor</label><br>
-      {{view "select" class="form-control" prompt="N/A"
+      {{ember-selectize prompt="N/A"
       value=searchSectionInstructor
-      content=instructors 
+      content=model.instructors 
       optionValuePath="content.id"
       optionLabelPath="content.fullName"}}
     </div>
@@ -149,7 +149,7 @@
     {{! Course type }}
     <div class="form-group">
       <label>Course Type</label><br>
-      {{view "select" class="form-control" prompt="N/A"
+      {{ember-selectize prompt="N/A"
       value=searchSectionType
       content=courseTypes}}
     </div>
@@ -157,9 +157,9 @@
     {{! Department }}
     <div class="form-group">
       <label>Department</label><br>
-      {{view "select" class="form-control" prompt="N/A"
+      {{ember-selectize prompt="N/A"
       value=searchSectionDepartment
-      content=departments 
+      content=model.departments 
       optionValuePath="content.id"
       optionLabelPath="content.name"}}
     </div>
@@ -167,9 +167,9 @@
     {{! Course }}
     <div class="form-group">
       <label>Course</label><br>
-      {{view "select" class="form-control" prompt="N/A"
+      {{ember-selectize prompt="N/A"
       value=searchSectionCourse
-      content=courses 
+      content=model.courses 
       optionValuePath="content.id"
       optionLabelPath="content.display"}}
     </div>
@@ -202,13 +202,13 @@
     <hr>
 
     {{#if searchingVersions}}
-      {{#each cv in filteredCourses}}
+      {{#each filteredCourses as |cv|}}
         {{search-result-version cv=cv}}
       {{else}}
         <h3 class="text-muted">No results found!</h3>
       {{/each}}
     {{else}}
-      {{#each cs in filteredCourses}}
+      {{#each filteredCourses as |cs|}}
         {{search-result-section cs=cs}}
       {{else}}
         <h3 class="text-muted">No results found!</h3>
