@@ -4,23 +4,23 @@
   <div class="timeline-container">
     <div class="timeline-item">
       <div class="timeline-text">Author Review</div>
-      <div {{bind-attr class=":circle stage1Class"}}>1</div>
+      <div class="circle {{stage1Class}}">1</div>
     </div>
     <div class="timeline-item">
       <div class="timeline-text">I.D. Review</div>
-      <div {{bind-attr class=":circle stage2Class"}}>2</div>
+      <div class="circle {{stage2Class}}">2</div>
     </div>
     <div class="timeline-item">
       <div class="timeline-text">Discuss w/ I.D.</div>
-      <div {{bind-attr class=":circle stage3Class"}}>3</div>
+      <div class="circle {{stage3Class}}">3</div>
     </div>
     <div class="timeline-item">
       <div class="timeline-text">Make Changes</div>
-      <div {{bind-attr class=":circle stage4Class"}}>4</div>
+      <div class="circle {{stage4Class}}">4</div>
     </div>
     <div class="timeline-item">
       <div class="timeline-text">I.D. Sign-off</div>
-      <div {{bind-attr class=":circle stage5Class"}}>5</div>
+      <div class="circle {{stage5Class}}">5</div>
     </div>
   </div>
   <div class="quality-review-instructions">
@@ -48,7 +48,7 @@
       <input id="filePick" type="file">
     </div>
     <div style="margin-top: 10px;">
-      <label>Signee</label><br>
+      <label>Signee</label><br/>
       <input id="signeeBox" type="text" />
     </div>
     <div class="quality-review-controls">
@@ -59,13 +59,13 @@
       <div style="float:right;">
         {{#if onStage5}}
           <button 
-            {{bind-attr class=":btn :btn-primary certifyChecked::disabled"}} 
+            class="btn btn-primary {{if certifyChecked '' 'disabled'}}" 
             {{action "finish"}}>
             Finish Review
           </button>
         {{else}}
           <button 
-            {{bind-attr class=":btn :btn-primary certifyChecked::disabled"}} 
+            class="btn btn-primary {{if certifyChecked '' 'disabled'}}" 
             {{action "next"}}>
             Continue
           </button>

@@ -4,7 +4,7 @@ patient - if you leave the page, you will have to start over.</p>
 <form>
   <div class="form-group" style="width: 200px;">
     <label>Semester</label>
-    {{view "select" class="form-control"
+    {{ember-selectize class="form-control"
       content=semesterOptions
       value=selectedSemester
       optionValuePath="content.letter"
@@ -12,7 +12,7 @@ patient - if you leave the page, you will have to start over.</p>
   </div>
   <div class="form-group" style="width: 200px;">
     <label>Year</label> 
-    {{view "select" class="form-control"
+    {{ember-selectize class="form-control"
       content=yearOptions
       value=selectedYear}}
   </div>

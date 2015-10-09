@@ -19,13 +19,13 @@
 
     {{! Title }}
     <div class="form-group">
-      <label>Title</label><br>
+      <label>Title</label><br/>
       {{input type="text" class="form-control" placeholder="N/A" value=searchVersionTitle}}
     </div>
 
     {{! Author }}
     <div class="form-group">
-      <label>Author</label><br>
+      <label>Author</label><br/>
       {{ember-selectize prompt="N/A"
         value=searchVersionInstructor
         content=model.instructors 
@@ -34,7 +34,7 @@
     </div>
 
     {{! Copyright Compliant }}
-    <label>Copyright Compliant</label><br>
+    <label>Copyright Compliant</label><br/>
     <div class="btn-group btn-group-justified" data-toggle="buttons">
       <label class="btn btn-default active">
         {{radio-button name="searchVersionCopyCompliant" value=null 
@@ -49,10 +49,10 @@
         checked=searchVersionCopyCompliant}} No
       </label>
     </div>
-    <br>
+    <br/>
 
     {{! ADA Compliant }}
-    <label>ADA Compliant</label><br>
+    <label>ADA Compliant</label><br/>
     <div class="btn-group btn-group-justified" data-toggle="buttons">
       <label class="btn btn-default active">
         {{radio-button name="searchVersionADACompliant" value=null 
@@ -72,7 +72,7 @@
 
     {{! Course type }}
     <div class="form-group">
-      <label>Course Type</label><br>
+      <label>Course Type</label><br/>
       {{ember-selectize prompt="N/A"
       value=searchVersionType
       content=courseTypes}}
@@ -80,7 +80,7 @@
 
     {{! Department }}
     <div class="form-group">
-      <label>Department</label><br>
+      <label>Department</label><br/>
       {{ember-selectize prompt="N/A"
       value=searchVersionDepartment
       content=model.departments 
@@ -90,7 +90,7 @@
 
     {{! Course }}
     <div class="form-group">
-      <label>Course</label><br>
+      <label>Course</label><br/>
       {{ember-selectize prompt="N/A"
       value=searchVersionCourse
       content=model.courses 
@@ -102,7 +102,7 @@
     <h3>Reviews</h3>
 
     {{! Due for Review }}
-    <label>Due for Review</label><br>
+    <label>Due for Review</label><br/>
     <div class="btn-group btn-group-justified" data-toggle="buttons">
       <label class="btn btn-default active">
         {{radio-button name="searchVersionDueForReview" value=null checked=searchVersionDueForReview}} N/A
@@ -136,7 +136,7 @@
 
     {{! Instructor }}
     <div class="form-group">
-      <label>Instructor</label><br>
+      <label>Instructor</label><br/>
       {{ember-selectize prompt="N/A"
       value=searchSectionInstructor
       content=model.instructors 
@@ -148,7 +148,7 @@
 
     {{! Course type }}
     <div class="form-group">
-      <label>Course Type</label><br>
+      <label>Course Type</label><br/>
       {{ember-selectize prompt="N/A"
       value=searchSectionType
       content=courseTypes}}
@@ -156,7 +156,7 @@
 
     {{! Department }}
     <div class="form-group">
-      <label>Department</label><br>
+      <label>Department</label><br/>
       {{ember-selectize prompt="N/A"
       value=searchSectionDepartment
       content=model.departments 
@@ -166,7 +166,7 @@
 
     {{! Course }}
     <div class="form-group">
-      <label>Course</label><br>
+      <label>Course</label><br/>
       {{ember-selectize prompt="N/A"
       value=searchSectionCourse
       content=model.courses 
@@ -177,7 +177,7 @@
     <h3>Compliance Attested</h3>
 
     {{! Compliance attested }}
-    <label>Compliance Attested</label><br>
+    <label>Compliance Attested</label><br/>
     <div class="btn-group btn-group-justified" data-toggle="buttons">
       <label class="btn btn-default active">
         {{radio-button name="searchSectionAttested" value=null checked=searchSectionAttested}} N/A

@@ -11,14 +11,14 @@
     {{input type="text" placeholder="#" value=sectionCRN}}
   </td>
   <td>
-    {{view "select"
+    {{ember-selectize
     content=courseVersions
     optionValuePath="content"
     optionLabelPath="content.fullLabel"
     value=selectedCourseVersion}}
   </td>
   <td>
-    {{view "select"
+    {{ember-selectize
     content=instructors
     optionValuePath="content"
     optionLabelPath="content.fullName"

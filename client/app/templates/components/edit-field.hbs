@@ -1,4 +1,4 @@
-<p {{bind-attr class="bigField:big-field"}}>
+<p class="{{if bigField 'big-field'}}">
 <strong>{{name}}</strong>: 
 
 {{! If a link is provided, field shouldn't be editable }}
@@ -11,7 +11,7 @@
     {{#if editing}}
       {{input type="checkbox" name="checkInput" checked=value}}
     {{/if}}
-    <span {{bind-attr class="value:text-success:text-danger"}}>
+    <span class="{{if value 'text-success' 'text-danger'}}">
     {{to-yes-no value}}
     </span>
 

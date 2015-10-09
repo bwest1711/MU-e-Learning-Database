@@ -1,4 +1,5 @@
 from flask import Flask, Blueprint, send_file
+from cache import cache
 
 client_app = Blueprint('client_app', __name__,
                     static_url_path='/client',

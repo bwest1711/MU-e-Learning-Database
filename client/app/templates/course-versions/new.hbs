@@ -1,38 +1,9 @@
-<tr style="font-weight:bold;">
-  <td>Label</td>
-  <td>Author</td>
-  <td>Course</td>
-  <td>Course Type</td>
-  <td>Copyright</td>
-  <td>ADA</td>
-</tr>
-<tr>
-  <td>{{input type="text" placeholder="Label" value=versionLabel}}</td>
-  <td>
-    {{view "select"
-    content=instructors
-    optionValuePath="content"
-    optionLabelPath="content.fullName"
-    value=selectedAuthor}}
-  </td>
-  <td>
-    {{view "select"
-    content=courses
-    optionValuePath="content"
-    optionLabelPath="content.displayShort"
-    value=selectedCourse}}
-  </td>
-  <td>
-    {{view "select"
-    content=courseTypes
-    value=versionType}}
-  </td>
-  <td>{{input type="checkbox" checked=versionCopyrightCompliant}}</td>
-  <td>{{input type="checkbox" checked=versionAdaCompliant}}</td>
-</tr>
-<tr>
-  <td style="text-align:center" colspan=6>
-    <button class="btn btn-primary" {{action "create"}}>Create</button>
-    {{#link-to 'courseVersions.index' class="btn btn-default"}}Cancel{{/link-to}}
-  </td>
-</tr>
+<button {{action "toggleModal"}}>Toggle Modal</button>
+
+{{#if isShowingModal}}
+  {{#jquery-dialog}}
+  	<div class="dialog">
+	    Oh hai there!
+  	</div>
+  {{/jquery-dialog}}
+{{/if}}

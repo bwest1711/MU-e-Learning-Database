@@ -5,10 +5,10 @@
   {{/link-to}}
   <hr>
   <h3>Section Actions</h3>
-  <br>
-  {{mail-to instructor.email "Email course instructor"}}<br><br>
-  {{mail-to courseVersion.course.department.adminEmail "Email department administrator"}}<br><br>
-  <a class="action-link" {{action "deleteModel"}}>Delete this course section</a><br><br>
+  <br/>
+  {{mail-to instructor.email "Email course instructor"}}<br/><br/>
+  {{mail-to courseVersion.course.department.adminEmail "Email department administrator"}}<br/><br/>
+  <a class="action-link" {{action "deleteModel"}}>Delete this course section</a><br/><br/>
   </div>
   <div class="col-md-9" style="border-left: 1px solid #EEE;">
 
@@ -23,23 +23,23 @@
 
     {{edit-field bigField=true editable=false name="Email" value=instructor.email route="instructor"}}
 
-    <br>
+    <br/>
 
     {{edit-field name="CRN" value=crn}}
 
-    <br>
+    <br/>
 
     {{edit-field name="Dept. Administrator" value=courseVersion.course.department.admin}}
 
     {{edit-field name="Dept. Admin. Email" value=courseVersion.course.department.adminEmail}}
 
-    <br>
+    <br/>
 
     {{edit-field editable=false name="Compliance Attested" boolean=true value=attested}}
 
     {{!{{edit-field action="saveModel" editable=false name="Due On" value=attestedDueDate}}
     <strong>Due On: </strong> {{to-short-date attestedDueDate}}
-    <br>
+    <br/>
 
     <h3>Section Compliance</h3>
     {{#if attested}}
@@ -51,15 +51,15 @@
         <p><a href="http://www.miamioh.edu/">Example Standards</a></p>
         <p><a href="http://www.miamioh.edu/">Another Set of Standards</a></p>
         <p>Once the instructor has ensured the course is compliant, they should check the boxes below and type their name in the text box, then hit "Certify Compliance" to submit.</p>
-        <br>
+        <br/>
         <p>{{input id="check1" type="checkbox" checked=check1}} <label for="check1">I certify that the course meets [...].</label></p>
         <p>{{input id="check2" type="checkbox" checked=check2}} <label for="check2">I certify that the materials in the course are [...].</label></p>
         <p>{{input id="check3" type="checkbox" checked=check3}} <label for="check3">I certify that the course is [...].</label></p>
         <p><strong>Signee</strong></p>
         {{input type="text" placeholder="Name" value=signee}}
-        <br>
-        <br>
-        <button {{bind-attr class=":btn :btn-primary allBoxesChecked::disabled"}}  {{action "saveAttest"}}>Certify Compliance</button>
+        <br/>
+        <br/>
+        <button class="btn btn-primary {{if allBoxesChecked '' 'disabled'}}"  {{action "saveAttest"}}>Certify Compliance</button>
         <button class="btn btn-default" {{action "cancelAttest"}}>Cancel</button>
       </div>
       {{else}}
@@ -67,7 +67,7 @@
       {{/if}}
     {{/if}}
 
-    <br>
+    <br/>
   </div>
 </div>
 

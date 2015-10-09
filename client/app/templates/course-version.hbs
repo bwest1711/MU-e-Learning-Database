@@ -1,94 +1,104 @@
 <div class="row">
-  <div class="col-md-3">
-  {{#link-to "courseVersions" class="strong"}}
-  &lt; Go to course versions
-  {{/link-to}}
-  <hr>
-  <h3>Version Actions</h3>
-  <br>
-  {{mail-to instructor.email "Email course author"}}<br><br>
-  <a class="action-link" {{action "deleteModel"}}>Delete this course version</a><br><br>
-  </div>
-  <div class="col-md-9" style="border-left: 1px solid #EEE;">
+	<div class="col-md-3">
+		{{#link-to "courseVersions" class="strong"}}
+			&lt; Go to course versions
+		{{/link-to}}
+		<hr>
+		<h3>Version Actions</h3>
+		<br/>
+		{{mail-to instructor.email "Email course author"}}<br/><br/>
+		<a class="action-link" {{action "deleteModel"}}>
+			Delete this course version
+		</a>
+		<br/><br/>
+	</div>
+	<div class="col-md-9" style="border-left: 1px solid #EEE;">
+		{{edit-field bigField=true editable=false name="Course" value=model.course.title
+				link-to=course route="course"}}
 
-    {{edit-field bigField=true editable=false name="Course" value=course.title
-        link-to=course route="course"}}
+		{{edit-field bigField=true editable=false name="Author" value=model.instructor.fullName
+				link-to=instructor route="instructor"}}
 
-    {{edit-field bigField=true editable=false name="Author" value=instructor.fullName
-        link-to=instructor route="instructor"}}
+		{{edit-field bigField=true editable=false name="Email" value=model.instructor.email}}
 
-    {{edit-field bigField=true editable=false name="Email" value=instructor.email}}
+		{{edit-field action="saveModel" bigField=true editable=true name="Label" value=model.label}}
 
-    {{edit-field action="saveModel" bigField=true editable=true name="Label" value=label}}
+		<br/>
 
-    <br>
+		{{edit-field action="saveModel" editable=true name="Type" value=model.courseType}}
 
-    {{edit-field action="saveModel" editable=true name="Type" value=courseType}}
+		{{edit-field action="saveModel" editable=true boolean=true name="ADA Compliant" value=model.adaCompliant}}
 
-    {{edit-field action="saveModel" editable=true boolean=true name="ADA Compliant" value=adaCompliant}}
+		{{edit-field action="saveModel" editable=true boolean=true name="Copyright Compliant" value=model.copyrightCompliant}}
 
-    {{edit-field action="saveModel" editable=true boolean=true name="Copyright Compliant" value=copyrightCompliant}}
+		<br/>
 
-    <br>
+		<strong>Due for review on: </strong>
+		{{#if model.neverReviewed}}
+			<span class="text-muted">[Never reviewed]</span>
+		{{else}}
+			<span>{{to-short-date model.dueForReviewDate}}</span>
+		{{/if}}
 
-    <strong>Due for review on: </strong>
-    {{#if neverReviewed}}
-    <span class="text-muted">[Never reviewed]</span>
-    {{else}}
-    <span>{{to-short-date dueForReviewDate}}</span>
-    {{/if}}
+		<br/><br/>
 
-    <br><br>
+		{{#if isUnderReview}}
+			{{quality-review-timeline action="finalizeReview"}}
+		{{else}}
+			<button class="btn btn-primary btn-lg" {{action "startReview"}}>Begin compliance review</button>
+		{{/if}}
 
-    {{#if isUnderReview}}
-      {{quality-review-timeline action="finalizeReview"}}
-    {{else}}
-    <button class="btn btn-primary btn-lg" {{action "startReview"}}>Begin compliance review</button>
-    {{/if}}
+		<br/>
+		<br/>
 
-    <br>
-    <br>
+		<h4>Past Compliance Reviews</h4>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Date Started</th>
+					<th>Date Finished</th>
+					<th>Notes and Attachments</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each model.qualityReviews as |qr|}}
+					<tr>
+						<td>{{to-short-date qr.startDate}}</td>
+						<td>{{to-short-date qr.endDate}}</td>
+						<td><a href="">View ></a></td>
+					</tr>
+				{{else}}
+					<tr>
+						<td class="empty-collection-row" colspan=3>No compliance reviews for this version</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
 
-    <h4>Past Compliance Reviews</h4>
-    <table class="table table-bordered">
-      <tr>
-        <th>Date Started</th>
-        <th>Date Finished</th>
-        <th>Notes and Attachments</th>
-      </tr>
-      {{#each qr in qualityReviews}}
-      <tr>
-        <td>{{to-short-date qr.startDate}}</td>
-        <td>{{to-short-date qr.endDate}}</td>
-        <td><a href="">View ></a></td>
-      </tr>
-      {{else}}
-      <tr>
-        <td class="empty-collection-row" colspan=3>No compliance reviews for this version</td>
-      </tr>
-      {{/each}}
-    </table>
-
-    <h4>Course Sections</h4>
-    <table class="table table-bordered">
-      <tr>
-        <th>CRN</th>
-        <th>Instructor</th>
-        <th>Semester</th>
-      </tr>
-      {{#each cs in courseSections}}
-      <tr>
-        <td><strong>{{#link-to "courseSection" cs}}{{cs.crn}}{{/link-to}}</strong></td>
-        <td>{{cs.instructor.fullName}}</td>
-        <td>{{cs.semester}}</td>
-      </tr>
-      {{else}}
-      <tr>
-        <td class="empty-collection-row" colspan=2>No course sections for this version</td>
-      </tr>
-      {{/each}}
-    </table>
-  </div>
+		<h4>Course Sections</h4>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>CRN</th>
+					<th>Instructor</th>
+					<th>Semester</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each model.courseSections as |cs|}}
+					<tr>
+						<td><strong>{{#link-to "courseSection" cs}}{{cs.crn}}{{/link-to}}</strong></td>
+						<td>{{cs.instructor.fullName}}</td>
+						<td>{{cs.semester}}</td>
+					</tr>
+				{{else}}
+					<tr>
+						<td class="empty-collection-row" colspan=3>No course sections for this version</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
 </div>
 
 {{outlet}}

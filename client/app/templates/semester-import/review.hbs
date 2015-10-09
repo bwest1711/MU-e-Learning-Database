@@ -1,18 +1,18 @@
-<br>
+<br/>
 <h4>Due Date</h4>
 <p>Set the date on which notifications will be sent to instructors informing them that they must attest the compliance of the course section they are teaching. This is an email that will link them to the page of their course section.</p>
 <p>This is usually sometime close to the start of the given semester.</p>
 <strong>Date</strong>: {{bootstrap-datepicker value=dueDate}}
-<br>
-<br>
+<br/>
+<br/>
 
 <h4>Finalize</h4>
 <p>Once you're done reviewing the courses, departments, and instructors below, hit "Import" to finalize the data import, or "Cancel" to stop the import.</p>
 <button class="btn btn-primary" {{action "finalizeImport"}}>Import</button>
 <button class="btn btn-default">Cancel</button>
 
-<br>
-<br>
+<br/>
+<br/>
 <h4>Course imports for <strong>{{semester}}{{year}}</strong>:</h4>
 
 <h4><strong>Departments</strong></h4>
@@ -21,7 +21,7 @@
     <th>Abbrev.</th>
     <th>Name</th>
   </tr>
-{{#each dept in departments}}
+{{#each model.departments as |dept|}}
   <tr>
     <td><strong>{{dept.abbreviation}}</strong></td>
     <td>{{dept.name}}</td>
@@ -36,7 +36,7 @@
     <th>Number</th>
     <th>Title</th>
   </tr>
-{{#each course in courses}}
+{{#each model.courses as |course|}}
   <tr>
     <td>{{course.department}}</td>
     <td>{{course.number}}</td>
@@ -51,7 +51,7 @@
     <th>Unique ID</th>
     <th>Full Name</th>
   </tr>
-{{#each instr in instructors}}
+{{#each model.instructors as |instr|}}
   <tr>
     <td>{{instr.uniqueid}}</td>
     <td>{{instr.fullName}}</td>
@@ -65,7 +65,7 @@
     <th>Instructor ID</th>
     <th>Course Title</th>
   </tr>
-{{#each cs in courseSections}}
+{{#each courseSections as |cs|}}
   <tr>
     <td>{{cs.uniqueid}}</td>
     <td>{{cs.title}}</td>

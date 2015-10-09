@@ -5,7 +5,7 @@
     <th class="col-sm-2">Email</th>
     <th class="col-sm-2">UniqueID</th>
   </tr>
-{{#each instructor in model}}
+{{#each model as |instructior|}}
   <tr>
     <td><strong>{{#link-to 'instructor' instructor}}{{instructor.fullName}}{{/link-to}}</strong></td>
     <td>{{mail-to instructor.email}}</td>

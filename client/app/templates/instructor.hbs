@@ -5,18 +5,18 @@
   {{/link-to}}
   <hr>
   <h3>Instructor Actions</h3>
-  <br>
+  <br/>
   {{mail-to email "Email this instructor"}}
-  <br><br>
+  <br/><br/>
   <a class="action-link" {{action "deleteModel"}}>Delete this instructor</a>
-  <br><br>
+  <br/><br/>
   </div>
   <div class="col-md-9" style="border-left: 1px solid #EEE;">
     <h4>
       <p><strong>Full Name</strong>: {{fullName}}</p>
       <p><strong>Email</strong>: {{email}}</p>
     </h4>
-    <br>
+    <br/>
 
     <h4>Authored Course Versions</h4>
     <table class="table table-bordered">
@@ -45,7 +45,7 @@
         <th>Version</th>
         <th>Semester</th>
       </tr>
-      {{#each cs in courseSections}}
+      {{#each model.courseSections as |cs|}}
       <tr>
         <td>
           {{#link-to 'course' cs.course}}

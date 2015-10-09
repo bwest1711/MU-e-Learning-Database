@@ -7,7 +7,7 @@
     <th>Admin. Email</th>
     <th></th>
   </tr>
-  {{#each dept in model}}
+  {{#each model as |dept|}}
     {{department-edit-row dept=dept}}
   {{/each}}
 </table>
