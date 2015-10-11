@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.ObjectController.extend({
+export default Ember.Controller.extend({
   actions: {
     deleteModel: function () {
       if (confirm("Are you sure you wish to delete this instructor?")) {

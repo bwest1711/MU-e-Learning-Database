@@ -12,7 +12,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			{{#each model as |cv|}}
+			{{#each model.courseVersions as |cv|}}
 				<tr>
 					<td><strong>{{#link-to 'courseVersion' cv}}"{{cv.labelDisplay}}"{{/link-to}}</strong></td> 
 					<td>{{cv.instructor.fullName}}</td>
@@ -36,4 +36,3 @@
 		</tbody>
 	</table>
 {{/data-table}}
-{{outlet}}

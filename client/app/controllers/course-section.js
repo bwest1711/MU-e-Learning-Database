@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.ObjectController.extend({
+export default Ember.Controller.extend({
 
   // Enable/disable 'certify' button based on checkbox status
   check1: false,

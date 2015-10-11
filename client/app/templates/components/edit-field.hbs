@@ -2,8 +2,8 @@
 <strong>{{name}}</strong>: 
 
 {{! If a link is provided, field shouldn't be editable }}
-{{#if link-to}}
-  {{#link-to route link-to}}{{value}}{{/link-to}}
+{{#if link}}
+  {{#link-to route link}}{{value}}{{/link-to}}
 {{else}}
 
   {{! If field is boolean, show yes/no logic }}

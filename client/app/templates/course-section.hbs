@@ -6,44 +6,44 @@
   <hr>
   <h3>Section Actions</h3>
   <br/>
-  {{mail-to instructor.email "Email course instructor"}}<br/><br/>
-  {{mail-to courseVersion.course.department.adminEmail "Email department administrator"}}<br/><br/>
+  {{mail-to model.instructor.email "Email course instructor"}}<br/><br/>
+  {{mail-to model.courseVersion.course.department.adminEmail "Email department administrator"}}<br/><br/>
   <a class="action-link" {{action "deleteModel"}}>Delete this course section</a><br/><br/>
   </div>
   <div class="col-md-9" style="border-left: 1px solid #EEE;">
 
-    {{edit-field bigField=true editable=false name="Course" value=courseVersion.course.title
-        link-to=courseVersion.course route="course"}}
+    {{edit-field bigField=true editable=false name="Course" value=model.courseVersion.course.title
+        link=model.courseVersion.course route="course"}}
 
-    {{edit-field bigField=true editable=false name="Version" value=courseVersion.labelDisplay
-        link-to=courseVersion route="courseVersion"}}
+    {{edit-field bigField=true editable=false name="Version" value=model.courseVersion.labelDisplay
+        link=model.courseVersion route="courseVersion"}}
 
-    {{edit-field bigField=true editable=false name="Instructor" value=instructor.fullName
-        link-to=instructor route="instructor"}}
+    {{edit-field bigField=true editable=false name="Instructor" value=model.instructor.fullName
+        link=model.instructor route="instructor"}}
 
-    {{edit-field bigField=true editable=false name="Email" value=instructor.email route="instructor"}}
-
-    <br/>
-
-    {{edit-field name="CRN" value=crn}}
+    {{edit-field bigField=true editable=false name="Email" value=model.instructor.email route="instructor"}}
 
     <br/>
 
-    {{edit-field name="Dept. Administrator" value=courseVersion.course.department.admin}}
-
-    {{edit-field name="Dept. Admin. Email" value=courseVersion.course.department.adminEmail}}
+    {{edit-field name="CRN" value=model.crn}}
 
     <br/>
 
-    {{edit-field editable=false name="Compliance Attested" boolean=true value=attested}}
+    {{edit-field name="Dept. Administrator" value=model.courseVersion.course.department.admin}}
+
+    {{edit-field name="Dept. Admin. Email" value=model.courseVersion.course.department.adminEmail}}
+
+    <br/>
+
+    {{edit-field editable=false name="Compliance Attested" boolean=true value=model.attested}}
 
     {{!{{edit-field action="saveModel" editable=false name="Due On" value=attestedDueDate}}
-    <strong>Due On: </strong> {{to-short-date attestedDueDate}}
+    <strong>Due On: </strong> {{to-short-date model.attestedDueDate}}
     <br/>
 
     <h3>Section Compliance</h3>
-    {{#if attested}}
-    <span class="text-success"><span class="glyphicon glyphicon-check"></span> Certified Compliant on {{to-short-date attestedDate}} by {{attestedSignee}}</span>
+    {{#if model.attested}}
+    <span class="text-success"><span class="glyphicon glyphicon-check"></span> Certified Compliant on {{to-short-date model.attestedDate}} by {{model.attestedSignee}}</span>
     {{else}}
       {{#if attesting}}
       <div style="border:1px solid #222; padding:10px;">
