@@ -1,23 +1,23 @@
 <h2>Courses</h2>
 {{#data-table}}
-  <table class="table table-striped table-bordered">
-    <thead>
-      <tr>
-        <th>Dept.</th>
-        <th>Number</th>
-        <th>Title</th>
-        <th>Number of versions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each model as |course|}}
-      <tr>
-        <td>{{course.department.abbreviation}}</td>
-        <td>{{course.number}}</td> 
-        <td><strong>{{#link-to 'course' course}}{{course.title}}{{/link-to}}</strong></td>
-        <td>{{course.courseVersions.length}}</td>
-      </tr>
-      {{/each}}
-    </tbody>
-  </table>
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th>Dept.</th>
+				<th>Number</th>
+				<th>Title</th>
+				<th>Number of versions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each model as |course|}}
+			<tr>
+				<td>{{course.department.abbreviation}}</td>
+				<td>{{course.number}}</td> 
+				<td><strong>{{#link-to 'course' course}}{{course.title}}{{/link-to}}</strong></td>
+				<td>{{course.courseVersions.length}}</td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
 {{/data-table}}

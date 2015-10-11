@@ -1,39 +1,42 @@
 <div class="row">
-<div class="col-md-3">
-<strong>
-{{#link-to 'courses' class="strong"}}
- Go to course catalog
-{{/link-to}}
-</strong>
-<hr>
-<h3>Course Actions</h3>
-<br/>
-<a class="action-link" {{action "deleteModel"}}>Delete this course</a>
-</div>
-<div class="col-md-9" style="border-left: 1px solid #EEE;">
-  <h2>{{department.abbreviation}} {{number}} {{title}}</h2>
-  <br/>
-  <h4>Course Versions</h4>
-  <table class="table table-bordered">
-    <tr>
-      <th>Instructor</th>
-      <th>Label</th>
-      <th>Sections</th>
-    </tr>
-    {{#each model.courseVersions as |cv|}}
-    <tr>
-
-      <td>{{#link-to 'instructor' cv.instructor}}{{cv.instructor.fullName}}{{/link-to}}</td>
-      <td>{{#link-to 'courseVersion' cv}}{{cv.labelDisplay}}{{/link-to}}</td>
-      <td>{{cv.courseSections.length}}</td>
-    </tr>
-    {{else}}
-    <tr>
-      <td class="empty-collection-row" colspan=3>No course versions</td>
-    </tr>
-    {{/each}}
-  </table>
-</div>
+	<div class="col-md-3">
+	<strong>
+	{{#link-to 'courses' class="strong"}}
+		Go to course catalog
+	{{/link-to}}
+	</strong>
+	<hr>
+	<h3>Course Actions</h3>
+	<br/>
+	<a class="action-link" {{action "deleteModel"}}>Delete this course</a>
+	</div>
+	<div class="col-md-9" style="border-left: 1px solid #EEE;">
+		<h2>{{department.abbreviation}} {{number}} {{title}}</h2>
+		<br/>
+		<h4>Course Versions</h4>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Instructor</th>
+					<th>Label</th>
+					<th>Sections</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each model.courseVersions as |cv|}}
+					<tr>
+						<td>{{#link-to 'instructor' cv.instructor}}{{cv.instructor.fullName}}{{/link-to}}</td>
+						<td>{{#link-to 'courseVersion' cv}}{{cv.labelDisplay}}{{/link-to}}</td>
+						<td>{{cv.courseSections.length}}</td>
+					</tr>
+				{{else}}
+					<tr>
+						<td class="empty-collection-row" colspan=3>No course versions</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
 </div>
 
 {{outlet}}
