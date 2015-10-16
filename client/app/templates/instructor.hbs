@@ -6,15 +6,15 @@
 		<hr>
 		<h3>Instructor Actions</h3>
 		<br/>
-		{{mail-to email "Email this instructor"}}
+		{{mail-to model.email "Email this instructor"}}
 		<br/><br/>
 		<a class="action-link" {{action "deleteModel"}}>Delete this instructor</a>
 		<br/><br/>
 	</div>
 	<div class="col-md-9" style="border-left: 1px solid #EEE;">
 		<h4>
-			<p><strong>Full Name</strong>: {{fullName}}</p>
-			<p><strong>Email</strong>: {{email}}</p>
+			<p><strong>Full Name</strong>: {{model.fullName}}</p>
+			<p><strong>Email</strong>: {{model.email}}</p>
 		</h4>
 		<br/>
 
