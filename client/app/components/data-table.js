@@ -7,15 +7,7 @@ export default Ember.Component.extend({
 			    dom: 'Bfrt',
 			    buttons: [
 			        'excel'
-			    ],
-			    columns: [
-				    { "type": "html" },
-				    { "type": "html" },
-				    { "type": "html" },
-				    { "type": "html" },
-				    { "type": "html" },
-				    { "type": "html" }
-				]
+			    ]
 		});
 	}.on( 'didInsertElement' )
 });
