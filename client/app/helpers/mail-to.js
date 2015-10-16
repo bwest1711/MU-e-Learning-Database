@@ -1,12 +1,11 @@
 import Ember from 'ember';
 
-// Thanks to s.meijer @ StackOverflow
-export function mailTo(emailAddress, label) {
-  emailAddress = Ember.Handlebars.Utils.escapeExpression(emailAddress);
-  label = (arguments.length === 2) ? emailAddress : Ember.Handlebars.Utils.escapeExpression(label);
+export default Ember.Helper.extend({
+	compute(params, hash) {
+		var _email = Ember.Handlebars.Utils.escapeExpression(params[0]);
+		var _label = (params.length != 2) ? _email : Ember.Handlebars.Utils.escapeExpression(params[1]);
 
-  var link = '<a href="mailto:' + emailAddress + '">' + label + '</a>';
-  return new Ember.Handlebars.SafeString(link);
-}
-
-export default Ember.Handlebars.makeBoundHelper(mailTo);
+		var _link = '<a href="mailto:' + _email + '">' + _label + '</a>';
+  		return new Ember.Handlebars.SafeString(_link);
+	}
+});

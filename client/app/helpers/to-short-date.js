@@ -1,12 +1,7 @@
 import Ember from 'ember';
 
-export function toShortDate(input) {
-
-  if(input) {
-    return input.toDateString();
-  } else {
-    return "";
-  }
-}
-
-export default Ember.Handlebars.makeBoundHelper(toShortDate);
+export default Ember.Helper.extend({
+	compute(params, hash) {
+		return params[0] ? params[0].toDateString() : "";
+	}
+});
