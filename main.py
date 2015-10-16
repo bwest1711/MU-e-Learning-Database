@@ -10,8 +10,6 @@ from api.routes import create_api
 def create_app():
     '''Initialize Flask and SQLAlchemy contexts and register blueprints'''
     app = Flask(__name__)
-    app.config['CACHE_TYPE'] = 'simple'
-    cache.init_app(app)
     db.init_app(app)
 
     app.register_blueprint(client_app)
