@@ -3,7 +3,6 @@
 
 from database import db
 from flask import Flask
-from cache import cache
 
 from client.views import client_app
 from api.routes import create_api
