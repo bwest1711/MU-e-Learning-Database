@@ -70,7 +70,7 @@ Vagrant.configure(2) do |config|
     sudo yum install -y git
 
     # Follow along with README.md
-    git clone https://github.com/mdchoate/MU-e-Learning-Database.git
+    git clone https://github.com/bwest1711/MU-e-Learning-Database.git
     cd MU-e-Learning-Database
 
     sudo yum install -y epel-release
@@ -102,7 +102,7 @@ Vagrant.configure(2) do |config|
 
     sudo ember build
     cd ..
-    sudo sed -i 's/app\.run(debug/app\.run(host="0\.0\.0\.0",debug/' run_dev.py
+    # sudo sed -i 's/app\.run(debug/app\.run(host="0\.0\.0\.0",debug/' run_dev.py
     env/bin/python run_dev.py
   SHELL
 end
