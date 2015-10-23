@@ -19,57 +19,61 @@
 		<br/>
 
 		<h4>Authored Course Versions</h4>
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>Course</th>
-					<th>Label</th>
-					<th>Sections</th>
-				</tr>
-			</thead>
-			<tbody>
-				{{#each model.courseVersions as |cv|}}
+		{{#data-table}}
+			<table class="table table-bordered">
+				<thead>
 					<tr>
-						<td>{{#link-to 'course' cv.course}}{{cv.course.department.abbreviation}} {{cv.course.number}}{{/link-to}}</td>
-						<td>{{#link-to 'courseVersion' cv}}{{cv.labelDisplay}}{{/link-to}}</td>
-						<td>{{cv.courseSections.length}}</td>
+						<th>Course</th>
+						<th>Label</th>
+						<th>Sections</th>
 					</tr>
-				{{else}}
-					<tr>
-						<td class="empty-collection-row" colspan=4>No course versions authored</td>
-					</tr>
-				{{/each}}
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					{{#each model.courseVersions as |cv|}}
+						<tr>
+							<td>{{#link-to 'course' cv.course}}{{cv.course.department.abbreviation}} {{cv.course.number}}{{/link-to}}</td>
+							<td>{{#link-to 'courseVersion' cv}}{{cv.labelDisplay}}{{/link-to}}</td>
+							<td>{{cv.courseSections.length}}</td>
+						</tr>
+					{{else}}
+						<tr>
+							<td class="empty-collection-row" colspan=4>No course versions authored</td>
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		{{/data-table}}
 
 		<h4>Course Sections</h4>
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>Course</th>
-					<th>Version</th>
-					<th>Semester</th>
-				</tr>
-			</thead>
-			<tbody>
-				{{#each model.courseSections as |cs|}}
+		{{#data-table}}
+			<table class="table table-bordered">
+				<thead>
 					<tr>
-						<td>
-							{{#link-to 'course' cs.course}}
-							{{cs.courseVersion.course.department.abbreviation}} 
-							{{cs.courseVersion.course.number}}
-							{{/link-to}}
-						</td>
-						<td>{{#link-to 'courseVersion' cs.courseVersion}}{{cs.courseVersion.label}}{{/link-to}}</td>
-						<td>{{cs.semester}}</td>
+						<th>Course</th>
+						<th>Version</th>
+						<th>Semester</th>
 					</tr>
-				{{else}}
-					<tr>
-						<td class="empty-collection-row" colspan=3>No course sections taught</td>
-					</tr>
-				{{/each}}
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					{{#each model.courseSections as |cs|}}
+						<tr>
+							<td>
+								{{#link-to 'course' cs.course}}
+								{{cs.courseVersion.course.department.abbreviation}} 
+								{{cs.courseVersion.course.number}}
+								{{/link-to}}
+							</td>
+							<td>{{#link-to 'courseVersion' cs.courseVersion}}{{cs.courseVersion.label}}{{/link-to}}</td>
+							<td>{{cs.semester}}</td>
+						</tr>
+					{{else}}
+						<tr>
+							<td class="empty-collection-row" colspan=3>No course sections taught</td>
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		{{/data-table}}
 	</div>
 </div>
 

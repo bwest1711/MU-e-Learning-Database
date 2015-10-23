@@ -14,28 +14,30 @@
 		<h2>{{model.department.abbreviation}} {{model.number}} {{model.title}}</h2>
 		<br/>
 		<h4>Course Versions</h4>
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>Instructor</th>
-					<th>Label</th>
-					<th>Sections</th>
-				</tr>
-			</thead>
-			<tbody>
-				{{#each model.courseVersions as |cv|}}
+		{{#data-table}}
+			<table class="table table-bordered">
+				<thead>
 					<tr>
-						<td>{{#link-to 'instructor' cv.instructor}}{{cv.instructor.fullName}}{{/link-to}}</td>
-						<td>{{#link-to 'courseVersion' cv}}{{cv.labelDisplay}}{{/link-to}}</td>
-						<td>{{cv.courseSections.length}}</td>
+						<th>Instructor</th>
+						<th>Label</th>
+						<th>Sections</th>
 					</tr>
-				{{else}}
-					<tr>
-						<td class="empty-collection-row" colspan=3>No course versions</td>
-					</tr>
-				{{/each}}
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					{{#each model.courseVersions as |cv|}}
+						<tr>
+							<td>{{#link-to 'instructor' cv.instructor}}{{cv.instructor.fullName}}{{/link-to}}</td>
+							<td>{{#link-to 'courseVersion' cv}}{{cv.labelDisplay}}{{/link-to}}</td>
+							<td>{{cv.courseSections.length}}</td>
+						</tr>
+					{{else}}
+						<tr>
+							<td class="empty-collection-row" colspan=3>No course versions</td>
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		{{/data-table}}
 	</div>
 </div>
 

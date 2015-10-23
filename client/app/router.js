@@ -19,7 +19,9 @@ Router.map(function() {
   this.resource("courseVersions", function() {
     this.route("new");
   });
-  this.resource("courseVersion", { path: "/courseVersions/:courseVersion_id" });
+  this.route("courseVersion", { path: "/courseVersions/:courseVersion_id" }, function() {
+    this.route("qualityReview", {resetNamespace: true, path: "/qualityReviews/:qualityReview_id"});
+  });
 
   this.resource("courseSections", function () {
     this.route("new");
