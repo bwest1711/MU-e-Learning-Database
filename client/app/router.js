@@ -23,6 +23,10 @@ Router.map(function() {
     this.route("qualityReview", {resetNamespace: true, path: "/qualityReviews/:qualityReview_id"}, function(){
       this.route('view');
     });
+    this.route("qualityReviews", {resetNamespace: true, path: "/qualityReviews/"}, function() {
+      this.route('all');
+      this.route('new');
+    });
   });
 
   this.resource("courseSections", function () {

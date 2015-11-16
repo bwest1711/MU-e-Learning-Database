@@ -30,6 +30,7 @@ export default Ember.Controller.extend({
       }, function(response) {
         console.log(response);
       });
+      this.transitionToRoute("qualityReviews.new");
     },
     updateReview: function(stage) {
       var thisModel = this.get('model');
@@ -50,7 +51,7 @@ export default Ember.Controller.extend({
     saveNote: function(stage) {
       var self = this;
       var text =  Ember.$('.note').val();
-      var signature =  Ember.$('#signeeBox').val()
+      var signature =  Ember.$('#signeeBox').val();
       self.store.findRecord('qualityReview', this.get('curReview')).then(function(qualityReview){
         var note = self.store.createRecord('note', {
           stage: stage,

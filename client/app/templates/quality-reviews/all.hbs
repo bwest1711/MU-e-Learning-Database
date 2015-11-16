@@ -1,0 +1,25 @@
+<h4>Past Compliance Reviews</h4>
+{{#data-table}}
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Date Started</th>
+				<th>Date Finished</th>
+				<th>Notes and Attachments</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each model.qualityReviews as |qr|}}
+				<tr>
+					<td>{{to-short-date qr.startDate}}</td>
+					<td>{{to-short-date qr.endDate}}</td>
+					<td class='viewQR'>{{#link-to 'qualityReview' model qr}}View{{/link-to}}</td>
+				</tr>
+			{{else}}
+				<tr>
+					<td class="empty-collection-row" colspan=3>No compliance reviews for this version</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+{{/data-table}}
