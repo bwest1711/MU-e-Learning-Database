@@ -27,11 +27,15 @@ class Note(db.Model):
     # Which returns a .pdf file
     attachment = db.Column(db.String(1024))
 
-    def __init__(self, qualityReview, stage=0, text="", attachment=""):
+    #
+    signature = db.Column(db.String(100))
+
+    def __init__(self, qualityReview, signature, stage=0, text="", attachment=""):
         self.qualityReview = qualityReview
         self.stage = stage
         self.text = text
         self.attachment = attachment
+        self.signature = signature
 
     @property
     def to_json(self):
@@ -40,5 +44,6 @@ class Note(db.Model):
             'qualityReview': self.qualityReview,
             'stage': self.stage,
             'text': self.text,
-            'attachment': self.attachment
+            'attachment': self.attachment,
+            'signature' : self.signature
         }

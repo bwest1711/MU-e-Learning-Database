@@ -150,3 +150,8 @@ a.action-link {
     transform: rotate(360deg);
   }
 }
+
+.flL{float: left;}
+.flR{float:right;}
+.clearfix{clear:both;}
+.w50{width:50%;}

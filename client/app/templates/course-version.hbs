@@ -11,71 +11,44 @@
 			Delete this course version
 		</a>
 		<br/><br/>
+		{{#each model.qualityReviews as |qr|}}
+			{{#link-to 'qualityReview.view' model qr}}{{qr.endDate}}{{/link-to}}<br/>
+		{{/each}}
 	</div>
 	<div class="col-md-9" style="border-left: 1px solid #EEE;">
-		{{edit-field bigField=true editable=false name="Course" value=model.course.title
-				link=model.course route="course"}}
+		<div class="clearfix">
+			<div class="flL w50">
+				{{edit-field bigField=true editable=false name="Course" value=model.course.title
+						link=model.course route="course"}}
 
-		{{edit-field bigField=true editable=false name="Author" value=model.instructor.fullName
-				link=model.instructor route="instructor"}}
+				{{edit-field bigField=true editable=false name="Author" value=model.instructor.fullName
+						link=model.instructor route="instructor"}}
 
-		{{edit-field bigField=true editable=false name="Email" value=model.instructor.email}}
+				{{edit-field bigField=true editable=false name="Email" value=model.instructor.email}}
 
-		{{edit-field action="saveModel" bigField=true editable=true name="Label" value=model.label}}
+				{{edit-field action="saveModel" bigField=true editable=true name="Label" value=model.label}}
+			</div>
+			<div class="flR w50">
+				{{edit-field action="saveModel" editable=true name="Type" value=model.courseType}}
 
-		<br/>
+				{{edit-field action="saveModel" editable=true boolean=true name="ADA Compliant" value=model.adaCompliant}}
 
-		{{edit-field action="saveModel" editable=true name="Type" value=model.courseType}}
+				{{edit-field action="saveModel" editable=true boolean=true name="Copyright Compliant" value=model.copyrightCompliant}}
+			
+				<strong>Due for review on: </strong>
+				{{#if model.neverReviewed}}
+					<span class="text-muted">[Never reviewed]</span>
+				{{else}}
+					<span>{{to-short-date model.dueForReviewDate}}</span>
+				{{/if}}
 
-		{{edit-field action="saveModel" editable=true boolean=true name="ADA Compliant" value=model.adaCompliant}}
-
-		{{edit-field action="saveModel" editable=true boolean=true name="Copyright Compliant" value=model.copyrightCompliant}}
-
-		<br/>
-
-		<strong>Due for review on: </strong>
-		{{#if model.neverReviewed}}
-			<span class="text-muted">[Never reviewed]</span>
-		{{else}}
-			<span>{{to-short-date model.dueForReviewDate}}</span>
-		{{/if}}
+				<br/><br/>
+				{{outlet}}
+			</div>
+		</div>
 
 		<br/><br/>
 
-		{{#if isUnderReview}}
-			{{quality-review-timeline action="finalizeReview"}}
-		{{else}}
-			<button class="btn btn-primary btn-lg" {{action "startReview"}}>Begin compliance review</button>
-		{{/if}}
-
-		<br/>
-		<br/>
-
-		<h4>Past Compliance Reviews</h4>
-		{{#data-table}}
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th>Date Started</th>
-						<th>Date Finished</th>
-						<th>Notes and Attachments</th>
-					</tr>
-				</thead>
-				<tbody>
-					{{#each model.qualityReviews as |qr|}}
-						<tr>
-							<td>{{to-short-date qr.startDate}}</td>
-							<td>{{to-short-date qr.endDate}}</td>
-							<td><a href="">View ></a></td>
-						</tr>
-					{{else}}
-						<tr>
-							<td class="empty-collection-row" colspan=3>No compliance reviews for this version</td>
-						</tr>
-					{{/each}}
-				</tbody>
-			</table>
-		{{/data-table}}
 		<h4>Course Sections</h4>
 		{{#data-table}}
 			<table class="table table-bordered">
@@ -101,7 +74,31 @@
 				</tbody>
 			</table>
 		{{/data-table}}
+
+		<h4>Past Compliance Reviews</h4>
+		{{#data-table}}
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Date Started</th>
+						<th>Date Finished</th>
+						<th>Notes and Attachments</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each model.qualityReviews as |qr|}}
+						<tr>
+							<td>{{to-short-date qr.startDate}}</td>
+							<td>{{to-short-date qr.endDate}}</td>
+							<td class='viewQR'>{{#link-to 'qualityReview' model qr}}View{{/link-to}}</td>
+						</tr>
+					{{else}}
+						<tr>
+							<td class="empty-collection-row" colspan=3>No compliance reviews for this version</td>
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		{{/data-table}}
 	</div>
 </div>
-
-{{outlet}}

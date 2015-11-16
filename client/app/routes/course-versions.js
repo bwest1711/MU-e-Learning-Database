@@ -6,7 +6,8 @@ export default Ember.Route.extend({
       courseVersions: this.store.findAll('courseVersion'),
       instructors: this.store.findAll('instructor'),
       departments: this.store.findAll('department'),
-      courses: this.store.findAll('course')
+      courses: this.store.findAll('course'),
+      qualityReviews: this.store.findAll('qualityReview')
     });
   }
 });

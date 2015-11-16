@@ -8,6 +8,7 @@ from api.models.course_section import CourseSection
 from api.models.quality_review import QualityReview
 from api.models.department import Department
 from api.models.note import Note
+from api.models.user import User
 
 app = create_app()
 app.config.from_object('config.Config')
@@ -28,6 +29,8 @@ with app.test_request_context():
     db.session.commit()
 
     items = [
+        # (Full Name, Email, UniqueID, Access Level)
+        User("Brandon West", "westbs2@miamioh.edu", "westbs2", 500),            # 1
 
         # (Full Name, Email, UniqueID)
         Instructor("Jamie Langford" , "langfojc@miamioh.edu"  , "langfojc"  ) , # 1

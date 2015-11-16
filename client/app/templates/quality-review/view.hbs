@@ -1,0 +1,10 @@
+<div>
+	{{model.stage}}<br/>
+	{{model.startDate}}<br/>
+	{{model.endDate}}<br/>
+	{{#each model.notes as |note|}}
+		{{note.stage}}
+		{{note.text}} 
+		{{note.signature}}<br/>
+	{{/each}}
+</div>

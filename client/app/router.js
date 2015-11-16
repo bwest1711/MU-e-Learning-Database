@@ -20,7 +20,9 @@ Router.map(function() {
     this.route("new");
   });
   this.route("courseVersion", { path: "/courseVersions/:courseVersion_id" }, function() {
-    this.route("qualityReview", {resetNamespace: true, path: "/qualityReviews/:qualityReview_id"});
+    this.route("qualityReview", {resetNamespace: true, path: "/qualityReviews/:qualityReview_id"}, function(){
+      this.route('view');
+    });
   });
 
   this.resource("courseSections", function () {
@@ -47,6 +49,7 @@ Router.map(function() {
   this.route("semester-import", function() {
     this.route("done");
   });
+  this.route('adminPanel');
 });
 
 export default Router;

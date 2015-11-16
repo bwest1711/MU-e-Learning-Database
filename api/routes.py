@@ -10,6 +10,7 @@ from api.models.course_section import CourseSection
 from api.models.quality_review import QualityReview
 from api.models.department import Department
 from api.models.note import Note
+from api.models.user import User
 from api.banner import get_banner_courses
 
 ################################################################################
@@ -37,7 +38,8 @@ def create_api(app, db):
         [CourseVersion, 'courseVersions'],
         [CourseSection, 'courseSections'],
         [QualityReview, 'qualityReviews'],
-        [Note, 'notes']
+        [Note, 'notes'],
+        [User, 'users']
     ]
     manager = flask.ext.restless.APIManager(app, flask_sqlalchemy_db=db)
 

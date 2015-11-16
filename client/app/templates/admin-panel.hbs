@@ -1,0 +1,22 @@
+<h2>Instructors</h2>
+{{#data-table}}
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Full Name</th>
+				<th>Email</th>
+				<th>UniqueID</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each model as |user|}}
+				<tr>
+					<td><strong>{{user.fullName}}</strong></td>
+					<td>{{user.email}}</td>
+					<td>{{user.accessLevel}}</td>
+				</tr>
+			{{/each}}
+			{{outlet}}
+		</tbody>
+	</table>
+{{/data-table}}
